@@ -3,11 +3,16 @@ extends KinematicBody2D
 export var speed: float = 10.0
 
 onready var anim: AnimationPlayer = $AnimationPlayer
+onready var cane_hit_area = $CaneHitArea
 
 func _ready():
 	anim.current_animation = "weapon_idle"
 	anim.play()
 
+func apply_damage():
+	for body in cane_hit_area.get_overlapping_bodies():
+		if body.is_in_group("teeth"):
+			body.increase_damage()
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("attack"):
@@ -28,12 +33,8 @@ func _physics_process(_delta: float):
 	velocity = move_and_slide(velocity.normalized() * speed)
 
 func on_bonk():
-	print("bonk")
+	apply_damage()
 
 func _on_AnimationPlayer_animation_finished(anim_name: String):
 	if anim_name == "weapon_swipe":
 		anim.current_animation = "weapon_idle"
-
-
-func on_bong():
-	pass # Replace with function body.
