@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/sprites/grabber-tooth-bigger.png" type="Texture" id=2]
 
 [node name="Options" type="CanvasLayer"]
 
@@ -21,6 +22,7 @@ text = "Options"
 align = 1
 
 [node name="Panel" type="Panel" parent="VContainer"]
+self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 79.0
 margin_right = 1024.0
 margin_bottom = 515.0
@@ -51,9 +53,10 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="SliderMaster" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMasterSlider"]
-margin_top = 80.0
+margin_top = 74.0
 margin_right = 763.0
-margin_bottom = 96.0
+margin_bottom = 102.0
+custom_icons/grabber = ExtResource( 2 )
 rounded = true
 
 [node name="ValMaster" type="Label" parent="VContainer/Panel/GridContainer"]
@@ -82,9 +85,10 @@ size_flags_horizontal = 3
 alignment = 1
 
 [node name="SliderMusic" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMusicSlider"]
-margin_top = 29.0
+margin_top = 23.0
 margin_right = 763.0
-margin_bottom = 45.0
+margin_bottom = 51.0
+custom_icons/grabber = ExtResource( 2 )
 rounded = true
 
 [node name="ValMusic" type="Label" parent="VContainer/Panel/GridContainer"]
@@ -113,9 +117,10 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="SliderEffects" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerEffectsSlider"]
-margin_top = 80.0
+margin_top = 74.0
 margin_right = 763.0
-margin_bottom = 96.0
+margin_bottom = 102.0
+custom_icons/grabber = ExtResource( 2 )
 rounded = true
 
 [node name="ValEffects" type="Label" parent="VContainer/Panel/GridContainer"]
