@@ -11,8 +11,13 @@ config_version=4
 [application]
 
 config/name="SweetTooth"
-run/main_scene="res://assets/scenes/Main.tscn"
+run/main_scene="res://assets/scenes/level1/Level1.tscn"
 config/icon="res://assets/sprites/icon.png"
+
+[display]
+
+window/vsync/use_vsync=false
+window/stretch/mode="2d"
 
 [importer_defaults]
 

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/scripts/level1/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player-top.png" type="Texture" id=2]
 [ext_resource path="res://assets/scenes/level1/Sugarcane.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/scripts/level1/AnimationPlayer.gd" type="Script" id=4]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -27,34 +28,6 @@ animations = [ {
 "name": "walking",
 "speed": 5.0
 } ]
-
-[sub_resource type="Animation" id=7]
-resource_name = "swipe"
-length = 1.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sugarcane:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1.4 ),
-"transitions": PoolRealArray( 1, 0.420448, 2.73208 ),
-"update": 0,
-"values": [ Vector2( 15, -10 ), Vector2( 0, -15 ), Vector2( 15, -10 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sugarcane:rotation_degrees")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.4 ),
-"transitions": PoolRealArray( 1, 2.92817, 0.450625, 3.36358, 2 ),
-"update": 0,
-"values": [ 0.0, 75.0, -70.0, 20.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=6]
 resource_name = "weapon_idle"
@@ -84,19 +57,72 @@ tracks/1/keys = {
 "values": [ 0.0, 3.0, 0.0 ]
 }
 
-[node name="Player" type="Node2D"]
+[sub_resource type="Animation" id=7]
+resource_name = "weapon_swipe"
+length = 1.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sugarcane:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8, 1.4 ),
+"transitions": PoolRealArray( 1, 0.420448, 2.73208 ),
+"update": 0,
+"values": [ Vector2( 15, -10 ), Vector2( 0, -15 ), Vector2( 15, -10 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sugarcane:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.4 ),
+"transitions": PoolRealArray( 1, 2.92817, 0.450625, 3.36358, 2 ),
+"update": 0,
+"values": [ 0.0, 75.0, -70.0, 20.0, 0.0 ]
+}
+tracks/2/type = "method"
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.6 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "on_bonk"
+} ]
+}
+
+[sub_resource type="CircleShape2D" id=8]
+radius = 14.0357
+
+[node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
+speed = 500.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walking"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Sugarcane" parent="." instance=ExtResource( 3 )]
-position = Vector2( 15.9822, -7.05353 )
-rotation = 0.0514257
+position = Vector2( 15.5625, -8.3125 )
+rotation = 0.0294524
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/swipe = SubResource( 7 )
 anims/weapon_idle = SubResource( 6 )
+anims/weapon_swipe = SubResource( 7 )
+script = ExtResource( 4 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 1 )
+shape = SubResource( 8 )
+
+[connection signal="bonk_moment_reached" from="AnimationPlayer" to="." method="on_bonk"]

@@ -1,8 +1,16 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://assets/scenes/level1/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/scenes/level1/Tooth.tscn" type="PackedScene" id=2]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 103, 93 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 223, 344 )
+scale = Vector2( 5, 5 )
+z_index = 1
+
+[node name="Tooth" parent="." instance=ExtResource( 2 )]
+position = Vector2( 222, 57 )
+scale = Vector2( 7, 7 )
