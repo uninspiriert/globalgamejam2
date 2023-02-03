@@ -1,0 +1,135 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
+
+[node name="Options" type="CanvasLayer"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.345098, 0.243137, 0.243137, 1 )
+
+[node name="VContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Options" type="Label" parent="VContainer"]
+margin_right = 1024.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 1 )
+text = "Options"
+align = 1
+
+[node name="Panel" type="Panel" parent="VContainer"]
+margin_top = 79.0
+margin_right = 1024.0
+margin_bottom = 515.0
+size_flags_vertical = 3
+
+[node name="HContainer" type="HBoxContainer" parent="VContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GridContainer" type="GridContainer" parent="VContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 3
+
+[node name="Master" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_top = 51.0
+margin_right = 180.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "Master"
+align = 1
+
+[node name="ContainerMasterSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
+margin_left = 184.0
+margin_right = 947.0
+margin_bottom = 177.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="SliderMaster" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMasterSlider"]
+margin_top = 80.0
+margin_right = 763.0
+margin_bottom = 96.0
+rounded = true
+
+[node name="ValMaster" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_left = 951.0
+margin_top = 51.0
+margin_right = 1024.0
+margin_bottom = 126.0
+custom_fonts/font = ExtResource( 1 )
+text = "0%"
+align = 1
+
+[node name="Music" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_top = 181.0
+margin_right = 180.0
+margin_bottom = 256.0
+custom_fonts/font = ExtResource( 1 )
+text = "Music"
+align = 1
+
+[node name="ContainerMusicSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
+margin_left = 184.0
+margin_top = 181.0
+margin_right = 947.0
+margin_bottom = 256.0
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="SliderMusic" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMusicSlider"]
+margin_top = 29.0
+margin_right = 763.0
+margin_bottom = 45.0
+rounded = true
+
+[node name="ValMusic" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_left = 951.0
+margin_top = 181.0
+margin_right = 1024.0
+margin_bottom = 256.0
+custom_fonts/font = ExtResource( 1 )
+text = "0%"
+align = 1
+
+[node name="Effects" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_top = 310.0
+margin_right = 180.0
+margin_bottom = 385.0
+custom_fonts/font = ExtResource( 1 )
+text = "Effects"
+align = 1
+
+[node name="ContainerEffectsSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
+margin_left = 184.0
+margin_top = 260.0
+margin_right = 947.0
+margin_bottom = 436.0
+size_flags_vertical = 3
+alignment = 1
+
+[node name="SliderEffects" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerEffectsSlider"]
+margin_top = 80.0
+margin_right = 763.0
+margin_bottom = 96.0
+rounded = true
+
+[node name="ValEffects" type="Label" parent="VContainer/Panel/GridContainer"]
+margin_left = 951.0
+margin_top = 310.0
+margin_right = 1024.0
+margin_bottom = 385.0
+custom_fonts/font = ExtResource( 1 )
+text = "0%"
+align = 1
+
+[node name="Back" type="Button" parent="VContainer"]
+margin_top = 519.0
+margin_right = 1024.0
+margin_bottom = 600.0
+custom_fonts/font = ExtResource( 1 )
+text = "Back"
