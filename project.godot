@@ -11,7 +11,8 @@ config_version=4
 [application]
 
 config/name="SweetTooth"
-config/icon="res://icon.png"
+run/main_scene="res://assets/scenes/Main.tscn"
+config/icon="res://assets/sprites/icon.png"
 
 [physics]
 
