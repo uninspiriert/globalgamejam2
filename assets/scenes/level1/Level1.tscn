@@ -13,4 +13,4 @@ z_index = 1
 
 [node name="Tooth" parent="." instance=ExtResource( 2 )]
 position = Vector2( 222, 57 )
-scale = Vector2( 5, 5 )
+scale = Vector2( 7, 7 )

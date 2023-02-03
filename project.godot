@@ -14,6 +14,10 @@ config/name="SweetTooth"
 run/main_scene="res://assets/scenes/Main.tscn"
 config/icon="res://assets/sprites/icon.png"
 
+[autoload]
+
+GameData="*res://assets/scripts/GameData.gd"
+
 [importer_defaults]
 
 texture={
