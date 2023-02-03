@@ -1,0 +1,63 @@
+[gd_scene format=2]
+
+[node name="Menu" type="CanvasLayer"]
+
+[node name="Titel" type="Label" parent="."]
+margin_top = 293.0
+margin_right = 1024.0
+margin_bottom = 307.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color( 0.345098, 0.243137, 0.243137, 1 )
+
+[node name="2HContainer" type="HBoxContainer" parent="MarginContainer"]
+margin_right = 1024.0
+margin_bottom = 600.0
+
+[node name="Panel" type="Panel" parent="MarginContainer/2HContainer"]
+margin_right = 510.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/2HContainer/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/2HContainer/Panel/CenterContainer"]
+margin_left = 223.0
+margin_top = 266.0
+margin_right = 286.0
+margin_bottom = 334.0
+
+[node name="Start" type="Button" parent="MarginContainer/2HContainer/Panel/CenterContainer/VBoxContainer"]
+margin_right = 63.0
+margin_bottom = 20.0
+text = "Start"
+
+[node name="Options" type="Button" parent="MarginContainer/2HContainer/Panel/CenterContainer/VBoxContainer"]
+margin_top = 24.0
+margin_right = 63.0
+margin_bottom = 44.0
+text = "Options"
+
+[node name="Quit" type="Button" parent="MarginContainer/2HContainer/Panel/CenterContainer/VBoxContainer"]
+margin_top = 48.0
+margin_right = 63.0
+margin_bottom = 68.0
+text = "Quit"
+
+[node name="Panel2" type="Panel" parent="MarginContainer/2HContainer"]
+modulate = Color( 1, 1, 1, 0 )
+self_modulate = Color( 1, 1, 1, 0 )
+margin_left = 514.0
+margin_right = 1024.0
+margin_bottom = 600.0
+size_flags_horizontal = 3
