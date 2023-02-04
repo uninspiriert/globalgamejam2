@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/scenes/level1/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/level1/Tooth.tscn" type="PackedScene" id=2]
@@ -15,6 +15,7 @@
 [ext_resource path="res://assets/sprites/front-tooth.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/front-top-damaged-3.png" type="Texture" id=14]
 [ext_resource path="res://assets/scenes/UI.tscn" type="PackedScene" id=15]
+[ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=16]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 103, 93 )
@@ -124,3 +125,10 @@ position = Vector2( 957, 527 )
 scale = Vector2( 6, 8 )
 z_index = 5
 damage_levels = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 14 ) ]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( -103, -93 )
+anchor_mode = 0
+current = true
+
+[node name="ShakeScreen" parent="Camera2D" instance=ExtResource( 16 )]

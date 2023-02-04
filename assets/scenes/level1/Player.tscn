@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/scripts/level1/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/sprites/player-top.png" type="Texture" id=2]
 [ext_resource path="res://assets/scenes/level1/Sugarcane.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/scripts/level1/AnimationPlayer.gd" type="Script" id=4]
 [ext_resource path="res://assets/scripts/level1/DashCD.gd" type="Script" id=5]
+[ext_resource path="res://assets/scenes/Blinking.tscn" type="PackedScene" id=6]
 
 [sub_resource type="AtlasTexture" id=1]
 atlas = ExtResource( 2 )
@@ -60,7 +61,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=7]
 resource_name = "weapon_swipe"
-length = 1.4
+length = 0.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sugarcane:position")
 tracks/0/interp = 1
@@ -68,7 +69,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.8, 1.4 ),
+"times": PoolRealArray( 0, 0.5, 0.8 ),
 "transitions": PoolRealArray( 1, 0.420448, 2.73208 ),
 "update": 0,
 "values": [ Vector2( 15, -10 ), Vector2( 0, -15 ), Vector2( 15, -10 ) ]
@@ -80,7 +81,7 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0, 0.5, 0.8, 1.1, 1.4 ),
+"times": PoolRealArray( 0, 0.3, 0.5, 0.6, 0.8 ),
 "transitions": PoolRealArray( 1, 2.92817, 0.450625, 3.36358, 2 ),
 "update": 0,
 "values": [ 0.0, 75.0, -70.0, 20.0, 0.0 ]
@@ -92,7 +93,7 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
-"times": PoolRealArray( 0.7 ),
+"times": PoolRealArray( 0.4 ),
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
@@ -148,7 +149,11 @@ one_shot = true
 wait_time = 0.2
 one_shot = true
 
+[node name="Blinking" parent="." instance=ExtResource( 6 )]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="bonk_moment_reached" from="AnimationPlayer" to="." method="on_bonk"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_DashDuration_timeout"]
-[connection signal="timeout" from="Immobilized" to="." method="_on_Immobilized_timeout"]
+[connection signal="timeout" from="Immobilized" to="." method="reset_player_state"]
+[connection signal="blink" from="Blinking" to="." method="blink"]
+[connection signal="blink_over" from="Blinking" to="." method="reset_player_state"]

@@ -7,18 +7,22 @@ export var health: float = 3.0
 
 enum PlayerState{
 	NONE,
-	IMMOBILIZED
+	IMMOBILIZED,
+	INVINCIBLE
 }
-var playerState
+var player_state
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
-var screen_size
+onready var shake = $"../Camera2D/ShakeScreen"
+onready var blinker = $Blinking
+
+var screen_size = null
 
 func _ready():
-	playerState = PlayerState.NONE
-	screen_size = get_viewport_rect().size	
+	player_state = PlayerState.NONE
+	screen_size = get_viewport_rect().size
 	$DashCD.init(1)
 	canvasUI.on_player_life_changed(health)
 	anim.current_animation = "weapon_idle"
@@ -33,6 +37,7 @@ func apply_damage():
 			tooth = body
 	if tooth != null:
 		tooth.increase_damage()
+		shake.start(0.1, 15, 8)
 
 func _process(delta: float):
 	$DashCD.tick(delta)
@@ -42,10 +47,11 @@ func _process(delta: float):
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
 #
-#	if playerState != PlayerState.IMMOBILIZED:
+#	if player_state != PlayerState.IMMOBILIZED:
 	if Input.is_action_just_pressed("dodge") and $DashCD.is_ready():
 		$DashDuration.start()
 		dash_speed = 5
+		player_state = PlayerState.INVINCIBLE
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
@@ -74,14 +80,22 @@ func _on_AnimationPlayer_animation_finished(anim_name: String):
 		anim.current_animation = "weapon_idle"
 
 func receive_damage():
-	if dash_speed == 1:
-		health -= 1.0
-		canvasUI.on_player_life_changed(health)
-		if health <= 0.0:
-			var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
+	if player_state == PlayerState.INVINCIBLE:
+		return
+
+	blinker.start()
+	player_state = PlayerState.INVINCIBLE
+	health -= 1.0
+	canvasUI.on_player_life_changed(health)
+	if health <= 0.0:
+		var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
 
 func _on_DashDuration_timeout():
 	dash_speed = 1
+	reset_player_state()
 
-func _on_Immobilized_timeout():
-	playerState = PlayerState.NONE
+func reset_player_state():
+	player_state = PlayerState.NONE
+
+func blink(color):
+	self.modulate = color

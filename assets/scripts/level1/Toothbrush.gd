@@ -20,8 +20,9 @@ func brush_sides():
 func _on_Toothbrush_body_entered(body):
 	if body.is_in_group("player"):
 		body.receive_damage()
+		return
 
-	if body.is_in_group("teeth") and rng.randi_range(1, 10) == 1:
+	if body.is_in_group("teeth") and rng.randi_range(1, 8) == 1:
 		var f = foam.instance()
 		get_parent().get_parent().add_child(f)
 		f.global_position = body.global_position

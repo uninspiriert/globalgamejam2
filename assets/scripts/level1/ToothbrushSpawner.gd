@@ -9,6 +9,7 @@ export(int) var bottom_num_segments = 4
 var rng = RandomNumberGenerator.new()
 var toothbrush = null
 onready var warn_sprite = Sprite.new()
+onready var timer = $Timer
 
 const LEFT = 0
 const RIGHT = 1
@@ -25,6 +26,7 @@ func _ready():
 	add_child(toothbrush)
 
 func brush():
+	timer.stop()
 	var w = get_viewport_rect().size.x
 	var h = get_viewport_rect().size.y
 
@@ -74,6 +76,7 @@ func brush():
 			global_position = warn_rect.position
 			yield(get_tree().create_timer(WARN_TIME_SECS), "timeout")
 			toothbrush.brush_bottom()
+	timer.start()
 
 func show_warning(rect: Rect2):
 	warn_sprite.global_position = rect.position

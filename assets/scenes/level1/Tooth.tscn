@@ -17,7 +17,7 @@ damage_levels = [ ExtResource( 1 ), ExtResource( 5 ), ExtResource( 2 ), ExtResou
 texture = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -7 )
+position = Vector2( 0, -5 )
 shape = SubResource( 1 )
 
 [node name="RepairTimer" type="Timer" parent="."]

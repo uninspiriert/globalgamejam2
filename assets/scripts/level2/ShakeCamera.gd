@@ -11,10 +11,10 @@ onready var camera = get_parent()
 #Frequency = Wie oft die Kamera / Sekunde die Richtung wechselt
 #Amplitude = Wie weit soll sich die Kamera vom Mittelpunkt entfernen
 
-func start(duration = 0.2, frequency = 15, amplitude = 16, priority = 0):
-	if (priority >= self.priority):
-		self.priority = priority
-		self.amplitude = amplitude
+func start(duration = 0.2, frequency = 15, ampl= 16, prio= 0):
+	if (prio >= self.priority):
+		self.priority = prio
+		self.amplitude = ampl
 
 		$Duration.wait_time = duration
 		$Frequency.wait_time = 1 / float(frequency)
