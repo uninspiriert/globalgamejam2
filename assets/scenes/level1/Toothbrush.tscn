@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/scripts/level1/Toothbrush.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 124.5 )
+extents = Vector2( 36, 95.875 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "brush_bottom"
@@ -18,7 +18,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 3.36359 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -900 ), Vector2( 0, -880 ), Vector2( 0, -900 ), Vector2( 0, -880 ), Vector2( 0, -900 ), Vector2( 0, -880 ), Vector2( 0, -900 ), Vector2( 0, -800 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -400 ), Vector2( 0, -380 ), Vector2( 0, -400 ), Vector2( 0, -380 ), Vector2( 0, -400 ), Vector2( 0, -380 ), Vector2( 0, -400 ), Vector2( 0, -350 ), Vector2( 0, 0 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -33,18 +33,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -1300 ), Vector2( 0, -1280 ), Vector2( 0, -1300 ), Vector2( 0, -1280 ), Vector2( 0, -1300 ), Vector2( 0, -1280 ), Vector2( 0, -1300 ), Vector2( 0, -1280 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 0 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, 0 ) ]
 }
 
 [node name="Toothbrush" type="Area2D"]
-position = Vector2( 0, -960 )
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -1.5 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
@@ -53,3 +48,5 @@ texture = ExtResource( 1 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/brush_bottom = SubResource( 2 )
 anims/brush_sides = SubResource( 3 )
+
+[connection signal="body_entered" from="." to="." method="_on_Toothbrush_body_entered"]

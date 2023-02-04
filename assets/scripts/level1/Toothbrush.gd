@@ -9,3 +9,7 @@ func brush_bottom():
 func brush_sides():
 	$AnimationPlayer.current_animation = "brush_sides"
 	$AnimationPlayer.play()
+
+func _on_Toothbrush_body_entered(body):
+	if body.is_in_group("player"):
+		body.receive_damage()

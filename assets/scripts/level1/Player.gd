@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 export var speed: float = 10.0
+export var health: float = 100.0
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
@@ -43,3 +44,8 @@ func on_bonk():
 func _on_AnimationPlayer_animation_finished(anim_name: String):
 	if anim_name == "weapon_swipe":
 		anim.current_animation = "weapon_idle"
+
+func receive_damage():
+	health -= 20.0
+	if health <= 0.0:
+		get_tree().change_scene("res://assets/scenes/GameOver.tscn")
