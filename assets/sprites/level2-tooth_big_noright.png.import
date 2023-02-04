@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level2-tooth_rightside.png-d5b974c3ccead63473d61ff4b23fac6c.stex"
+path="res://.import/level2-tooth_big_noright.png-3f0d50bd0a348a837daaae221b5d66de.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level2-tooth_rightside.png"
-dest_files=[ "res://.import/level2-tooth_rightside.png-d5b974c3ccead63473d61ff4b23fac6c.stex" ]
+source_file="res://assets/sprites/level2-tooth_big_noright.png"
+dest_files=[ "res://.import/level2-tooth_big_noright.png-3f0d50bd0a348a837daaae221b5d66de.stex" ]
 
 [params]
 

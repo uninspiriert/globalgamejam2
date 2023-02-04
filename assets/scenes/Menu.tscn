@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
-[ext_resource path="res://assets/sprites/tooth-menu-icon.png" type="Texture" id=2]
+[ext_resource path="res://assets/sprites/level2-tooth_whole.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/scenes/Options.tscn" type="PackedScene" id=4]
 [ext_resource path="res://resources/custom_button.tres" type="Theme" id=5]
@@ -14,6 +14,10 @@ options_scene = ExtResource( 4 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = 5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.345098, 0.243137, 0.243137, 1 )
@@ -94,8 +98,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Tooth-menu-icon" type="Sprite" parent="VBoxContainer/HContainer/PanelRechts/CenterContainer"]
-position = Vector2( 388.25, 488.25 )
-scale = Vector2( 11.3672, 11.3672 )
+position = Vector2( 326, 631 )
+scale = Vector2( 20, 20 )
 texture = ExtResource( 2 )
 
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]

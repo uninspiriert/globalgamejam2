@@ -14,7 +14,7 @@ func init():
 	add_child(menu)
 
 func start_game():
-	GameData.gamestate = GameData.GameState.INGAME
+	GameData.gamestate = GameData.GameState.INGAME		 
 	var level1 = level1_scene.instance()
 	add_child(level1)
 	get_tree().paused = false

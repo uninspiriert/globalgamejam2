@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/level2-tooth_wholet.png-8aa2fff105d6cdb27dd9db247d4def67.stex"
+path="res://.import/level2-tooth_whole.png-3f820a3bbc3666afbb684d6a35945bd8.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/level2-tooth_wholet.png"
-dest_files=[ "res://.import/level2-tooth_wholet.png-8aa2fff105d6cdb27dd9db247d4def67.stex" ]
+source_file="res://assets/sprites/level2-tooth_whole.png"
+dest_files=[ "res://.import/level2-tooth_whole.png-3f820a3bbc3666afbb684d6a35945bd8.stex" ]
 
 [params]
 
