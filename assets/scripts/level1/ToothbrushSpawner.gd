@@ -15,12 +15,13 @@ const LEFT = 0
 const RIGHT = 1
 const BOTTOM = 2
 
-const WARN_WIDTH = 20
+const WARN_WIDTH = 40
 const WARN_TIME_SECS = 1.0
 
 func _ready():
 	rng.randomize()
 	warn_sprite.set_texture(warning_texture)
+	warn_sprite.visible = false
 	get_parent().call_deferred("add_child", warn_sprite)
 	toothbrush = toothbrush_scene.instance()
 	add_child(toothbrush)
@@ -81,3 +82,4 @@ func brush():
 func show_warning(rect: Rect2):
 	warn_sprite.global_position = rect.position
 	warn_sprite.global_scale = rect.size / warning_texture.get_size()
+	warn_sprite.visible = true

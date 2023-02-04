@@ -36,8 +36,10 @@ func apply_damage():
 			max_z = body.z_index
 			tooth = body
 	if tooth != null:
-		tooth.increase_damage()
-		shake.start(0.1, 15, 8)
+		if tooth.increase_damage():
+			shake.start()
+		else:
+			shake.start(0.1, 15, 8)
 
 func _process(delta: float):
 	$DashCD.tick(delta)

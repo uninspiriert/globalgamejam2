@@ -14,14 +14,15 @@ func _ready():
 func set_correct_texture():
 	sprite.set_texture(damage_levels[damage_level])
 
-func increase_damage():
+func increase_damage() -> bool:
 	if damage_level == damage_levels.size() - 1:
 		queue_free()
-		return
+		return true
 
 	damage_level += 1
 	timer.start()
 	set_correct_texture()
+	return false
 
 func decrease_damage():
 	damage_level = max(0, damage_level - 1)
