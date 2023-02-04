@@ -25,14 +25,30 @@ func _ready():
 	add_child(toothbrush)
 
 func brush():
+	var w = get_viewport_rect().size.x
+	var h = get_viewport_rect().size.y
+
 	var side = rng.randi_range(0, 2)
 	var num_segments = side_num_segments
-	var length = get_viewport_rect().size.y
+	var length = h
 	if side == BOTTOM:
 		num_segments = bottom_num_segments
-		length = get_viewport_rect().size.x
+		length = w
 
 	var segment = rng.randi_range(0, num_segments - 1)
+
+	var player_pos = get_parent().get_node("Player").global_position
+	var player_pos2 = player_pos / Vector2(w / bottom_num_segments, h / side_num_segments)
+	player_pos2.x = int(player_pos2.x)
+	player_pos2.y = int(player_pos2.y)
+
+	# in 2/3 of cases use the player pos instead of random
+	if rng.randi_range(0, 2) != 0:
+		if side == BOTTOM:
+			segment = player_pos2.x
+		else:
+			segment = player_pos2.y
+
 	var warn_len = length / num_segments
 	var warn_offset = segment * warn_len + warn_len * 0.5
 

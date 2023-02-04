@@ -1,13 +1,14 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/brush.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/level1/Toothbrush.gd" type="Script" id=2]
+[ext_resource path="res://assets/scenes/level1/Foam.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 10, 124.5 )
+extents = Vector2( 36, 95.875 )
 
 [sub_resource type="Animation" id=2]
-resource_name = "brush"
+resource_name = "brush_bottom"
 tracks/0/type = "value"
 tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
@@ -18,7 +19,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 3.36359 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -128 ), Vector2( 0, -100 ), Vector2( 0, -128 ), Vector2( 0, -100 ), Vector2( 0, -128 ), Vector2( 0, -100 ), Vector2( 0, -128 ), Vector2( 0, -100 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 100 ), Vector2( 0, -300 ), Vector2( 0, -280 ), Vector2( 0, -300 ), Vector2( 0, -280 ), Vector2( 0, -300 ), Vector2( 0, -280 ), Vector2( 0, -300 ), Vector2( 0, -250 ), Vector2( 0, 100 ) ]
 }
 
 [sub_resource type="Animation" id=3]
@@ -33,11 +34,13 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 1 ),
 "transitions": PoolRealArray( 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 0.176777, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 0, 0 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, -700 ), Vector2( 0, -680 ), Vector2( 0, 0 ) ]
+"values": [ Vector2( 0, 100 ), Vector2( 0, -600 ), Vector2( 0, -580 ), Vector2( 0, -600 ), Vector2( 0, -580 ), Vector2( 0, -600 ), Vector2( 0, -580 ), Vector2( 0, -600 ), Vector2( 0, -580 ), Vector2( 0, 100 ) ]
 }
 
 [node name="Toothbrush" type="Area2D"]
+position = Vector2( 0, 100 )
 script = ExtResource( 2 )
+foam = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
