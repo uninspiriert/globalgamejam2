@@ -100,12 +100,6 @@ position = Vector2( -310, 127 )
 scale = Vector2( 6.17188, 6.17188 )
 texture = ExtResource( 2 )
 
-[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
-[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
-[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_focus_entered"]
-[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
