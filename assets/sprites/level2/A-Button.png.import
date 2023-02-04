@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/quicktime_tooth.png-fe2d00bc3dc4ed43ba4111895e81fe9d.stex"
+path="res://.import/A-Button.png-5edff5f5406517ff67ecbf12aa452f41.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/quicktime_tooth.png"
-dest_files=[ "res://.import/quicktime_tooth.png-fe2d00bc3dc4ed43ba4111895e81fe9d.stex" ]
+source_file="res://assets/sprites/level2/A-Button.png"
+dest_files=[ "res://.import/A-Button.png-5edff5f5406517ff67ecbf12aa452f41.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
