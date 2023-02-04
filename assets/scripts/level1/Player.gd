@@ -10,9 +10,14 @@ func _ready():
 	anim.play()
 
 func apply_damage():
+	var tooth = null
+	var max_z = 0
 	for body in cane_hit_area.get_overlapping_bodies():
-		if body.is_in_group("teeth"):
-			body.increase_damage()
+		if body.is_in_group("teeth") and body.z_index >= max_z:
+			max_z = body.z_index
+			tooth = body
+	if tooth != null:
+		tooth.increase_damage()
 
 func _process(_delta: float):
 	if Input.is_action_just_pressed("attack"):
