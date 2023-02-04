@@ -22,11 +22,11 @@ scale = Vector2( 4, 4 )
 texture = ExtResource( 2 )
 
 [node name="Progressbar" type="Sprite" parent="."]
-position = Vector2( 519.125, 564.5 )
-scale = Vector2( 0.409912, 0.085938 )
+position = Vector2( 519.5, 564.125 )
+scale = Vector2( 0.81836, 0.191407 )
 texture = ExtResource( 6 )
 
-[node name="SliderMaster" type="HSlider" parent="."]
+[node name="ProgressbarTooth" type="HSlider" parent="."]
 margin_left = 309.0
 margin_top = 551.0
 margin_right = 729.0

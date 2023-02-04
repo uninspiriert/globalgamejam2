@@ -15,7 +15,7 @@ func _input(event):
 		shake_on_attack()
 
 func shake_on_attack() -> void:
-	$ShakeCamera.start(0.3, 20, 10, 0)
+	$ShakeCamera.start(0.2, 20, 20, 0)
 "
 
 [node name="Level2" type="Camera2D"]

@@ -34,13 +34,10 @@ func _new_shake():
 func _reset():
 	$Tween.interpolate_property(camera, "offset", camera.offset, Vector2(), $Frequency.wait_time, TRANS, EASE)
 	$Tween.start()
-
 	priority = 0
-
 
 func _on_Frequency_timeout() -> void:
 	_new_shake()
-#
 
 func _on_Duration_timeout() -> void:
 	_reset()
