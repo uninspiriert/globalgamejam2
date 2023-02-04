@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scenes/level1/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/level1/Tooth.tscn" type="PackedScene" id=2]
@@ -9,45 +9,115 @@
 [ext_resource path="res://assets/scenes/level1/Toothbrush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scenes/level1/ToothbrushSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/icon.png" type="Texture" id=9]
+[ext_resource path="res://assets/sprites/mouth.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/front-top-damaged-2.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/front-top-damaged-1.png" type="Texture" id=12]
+[ext_resource path="res://assets/sprites/front-tooth.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/front-top-damaged-3.png" type="Texture" id=14]
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 103, 93 )
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.67451, 0.196078, 0.196078, 1 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer"]
+position = Vector2( 974, 395 )
+scale = Vector2( 8, 8 )
+texture = ExtResource( 10 )
+
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 223, 344 )
-scale = Vector2( 2, 2 )
+scale = Vector2( 4, 4 )
 z_index = 100
 
 [node name="Tooth" parent="." instance=ExtResource( 2 )]
-position = Vector2( 38, 51 )
-scale = Vector2( 2, 2 )
+position = Vector2( 466, 22 )
+scale = Vector2( 8, 8 )
 
 [node name="Tooth2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 47, 82 )
-scale = Vector2( 2, 2 )
+position = Vector2( 468, 134 )
+scale = Vector2( 8, 8 )
 z_index = 1
 
 [node name="Tooth3" parent="." instance=ExtResource( 2 )]
-position = Vector2( 59, 109 )
-scale = Vector2( 2, 2 )
+position = Vector2( 468, 256 )
+scale = Vector2( 8, 8 )
 z_index = 2
 
 [node name="Tooth4" parent="." instance=ExtResource( 2 )]
-position = Vector2( 74, 134 )
-scale = Vector2( 2, 2 )
+position = Vector2( 469, 372 )
+scale = Vector2( 8, 8 )
 z_index = 3
 
 [node name="Tooth5" parent="." instance=ExtResource( 2 )]
-position = Vector2( 90, 160 )
-scale = Vector2( 2, 2 )
+position = Vector2( 523, 473 )
+scale = Vector2( 8, 8 )
 z_index = 4
 
 [node name="Fang" parent="." instance=ExtResource( 2 )]
-position = Vector2( 115, 175 )
-scale = Vector2( 2, 2 )
+position = Vector2( 581, 489 )
+scale = Vector2( 8, 8 )
 z_index = 5
 damage_levels = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
 
 [node name="ToothbrushSpawner" parent="." instance=ExtResource( 8 )]
+scale = Vector2( 2, 2 )
+z_index = 200
 toothbrush_scene = ExtResource( 7 )
 warning_texture = ExtResource( 9 )
+
+[node name="Tooth6" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1274, 20 )
+scale = Vector2( 8, 8 )
+
+[node name="Tooth7" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1274, 134 )
+scale = Vector2( 8, 8 )
+
+[node name="Tooth8" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1272, 251 )
+scale = Vector2( 8, 8 )
+
+[node name="Tooth9" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1272, 371 )
+scale = Vector2( 8, 8 )
+
+[node name="Tooth10" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1219, 472 )
+scale = Vector2( 8, 8 )
+
+[node name="Fang2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1157, 481 )
+scale = Vector2( 8, 8 )
+z_index = 5
+damage_levels = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ]
+
+[node name="FrontTooth" parent="." instance=ExtResource( 2 )]
+position = Vector2( 665, 517 )
+scale = Vector2( 6, 8 )
+z_index = 5
+damage_levels = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 14 ) ]
+
+[node name="FrontTooth2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 1075, 519 )
+scale = Vector2( 6, 8 )
+z_index = 5
+damage_levels = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 14 ) ]
+
+[node name="FrontTooth3" parent="." instance=ExtResource( 2 )]
+position = Vector2( 801, 525 )
+scale = Vector2( 6, 8 )
+z_index = 5
+damage_levels = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 14 ) ]
+
+[node name="FrontTooth4" parent="." instance=ExtResource( 2 )]
+position = Vector2( 957, 527 )
+scale = Vector2( 6, 8 )
+z_index = 5
+damage_levels = [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 11 ), ExtResource( 14 ) ]
