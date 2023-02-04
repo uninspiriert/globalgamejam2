@@ -5,8 +5,8 @@ var musicvolume = db2linear(AudioServer.get_bus_volume_db(GameData._musicbus))
 var effectsvolume = db2linear(AudioServer.get_bus_volume_db(GameData._effectsbus))
 
 onready var sliderMaster = $VContainer/Panel/GridContainer/ContainerMasterSlider/SliderMaster
-onready var sliderMusic = $VContainer/Panel/GridContainer/ContainerMasterSlider/SliderMusic
-onready var sliderEffects = $VContainer/Panel/GridContainer/ContainerMasterSlider/SliderEffects
+onready var sliderMusic = $VContainer/Panel/GridContainer/ContainerMusicSlider/SliderMusic
+onready var sliderEffects = $VContainer/Panel/GridContainer/ContainerEffectsSlider/SliderEffects
 onready var labelMaster = $VContainer/Panel/GridContainer/ValMaster
 onready var labelMusic = $VContainer/Panel/GridContainer/ValMusic
 onready var labelEffects = $VContainer/Panel/GridContainer/ValEffects
@@ -34,3 +34,7 @@ func _on_SliderMusic_value_changed(value):
 func _on_SliderEffects_value_changed(value):
 	AudioServer.set_bus_volume_db(GameData._masterbus, linear2db(value))
 	labelEffects.text = str(value*100) + "%"
+
+
+func _on_Back_pressed():
+	queue_free()
