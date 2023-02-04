@@ -1,5 +1,7 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=17 format=2]
 
+[ext_resource path="res://assets/scenes/audio/game.mp3" type="AudioStream" id=1]
+[ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/icon.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/sugar-cane.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/level2-tooth_big_noright.png" type="Texture" id=5]
@@ -8,88 +10,115 @@
 [ext_resource path="res://assets/sprites/level2-tooth_front.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/level2/B-Button.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/level2/A-Button.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/progressbar.png" type="Texture" id=11]
+[ext_resource path="res://assets/sprites/tooth_big_grabber.png" type="Texture" id=12]
 [ext_resource path="res://assets/scripts/level2/level2.gd" type="Script" id=13]
+
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 11 )
+region_rect = Rect2( -0.0138245, 0, 1024.22, 64 )
+
+[sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=1]
+resource_name = "Hit"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Cane:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 0.353555, 3.03143, 1 ),
+"update": 0,
+"values": [ -155.0, -141.0, -147.4 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Tooth:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2.46229, 1 ),
+"update": 0,
+"values": [ 0.0, -19.5, -15.8 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("ToothRight:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2.46229, 1 ),
+"update": 0,
+"values": [ 0.0, -19.5, -15.8 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Icon:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 2, 1 ),
+"update": 0,
+"values": [ Vector2( 6, 8 ), Vector2( 6, 6 ), Vector2( 6, 8 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Icon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 2 ),
+"update": 0,
+"values": [ Vector2( 1421, 405 ), Vector2( 1421, 490 ) ]
+}
 
 [node name="level2" type="Node2D"]
 script = ExtResource( 13 )
 
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+
+[node name="ShakeCamera" parent="Camera2D" instance=ExtResource( 2 )]
+
 [node name="QE" type="CanvasLayer" parent="."]
 layer = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="QE"]
+[node name="HSlider" type="HSlider" parent="QE"]
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_bottom = 0.5
+margin_top = 354.0
+margin_bottom = 489.0
+custom_icons/grabber = ExtResource( 12 )
+custom_styles/slider = SubResource( 2 )
+custom_styles/grabber_area = SubResource( 3 )
+value = 50.0
 
-[node name="Panel" type="Panel" parent="QE/HBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.25098 )
-margin_right = 637.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="QE/HBoxContainer/Panel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-
-[node name="Lane" type="Panel" parent="QE/HBoxContainer/Panel/HBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.196078 )
-margin_right = 156.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Lane2" type="Panel" parent="QE/HBoxContainer/Panel/HBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.196078 )
-margin_left = 160.0
-margin_right = 316.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="A-Button" type="Sprite" parent="QE/HBoxContainer/Panel/HBoxContainer/Lane2"]
-position = Vector2( 77.0001, 807 )
+[node name="A-Button" type="Sprite" parent="QE"]
+position = Vector2( 741, 964 )
 scale = Vector2( 10, 10 )
 z_as_relative = false
 texture = ExtResource( 10 )
 
-[node name="Lane3" type="Panel" parent="QE/HBoxContainer/Panel/HBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.196078 )
-margin_left = 320.0
-margin_right = 476.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="B-Button" type="Sprite" parent="QE/HBoxContainer/Panel/HBoxContainer/Lane3"]
-position = Vector2( 79, 808 )
+[node name="B-Button" type="Sprite" parent="QE"]
+position = Vector2( 1230, 954 )
 scale = Vector2( 10, 10 )
 texture = ExtResource( 9 )
 
-[node name="Lane4" type="Panel" parent="QE/HBoxContainer/Panel/HBoxContainer"]
-self_modulate = Color( 1, 1, 1, 0.196078 )
-margin_left = 480.0
-margin_right = 637.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Panel2" type="Panel" parent="QE/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 641.0
-margin_right = 1278.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="Panel3" type="Panel" parent="QE/HBoxContainer"]
-modulate = Color( 1, 1, 1, 0 )
-margin_left = 1282.0
-margin_right = 1920.0
-margin_bottom = 1080.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
 [node name="Background" type="CanvasLayer" parent="."]
+layer = -1
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 anchor_right = 1.0
@@ -110,43 +139,49 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Tooth" type="Sprite" parent="Background"]
+[node name="Tooth" type="Sprite" parent="."]
 position = Vector2( 961, 684 )
+rotation = -0.275879
 scale = Vector2( 15, 15 )
+z_as_relative = false
 texture = ExtResource( 5 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Icon" type="Sprite" parent="Background"]
-position = Vector2( 1421, 405 )
-scale = Vector2( 6, 8 )
+[node name="Icon" type="Sprite" parent="."]
+position = Vector2( 1421, 405.126 )
+scale = Vector2( 6, 7.99705 )
+z_as_relative = false
 texture = ExtResource( 3 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Cane" type="Sprite" parent="Background"]
-position = Vector2( 1096, 531 )
-rotation = -2.57262
+[node name="Cane" type="Sprite" parent="."]
+position = Vector2( 1062, 528 )
+rotation = -2.57237
 scale = Vector2( 15, 15 )
+z_as_relative = false
 texture = ExtResource( 4 )
 flip_h = true
 
-[node name="ToothRight" type="Sprite" parent="Background"]
+[node name="ToothRight" type="Sprite" parent="."]
 position = Vector2( 961, 684 )
+rotation = -0.275879
 scale = Vector2( 15, 15 )
+z_as_relative = false
 texture = ExtResource( 6 )
-__meta__ = {
-"_edit_lock_": true
-}
 
-[node name="Foreground" type="Sprite" parent="Background"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Foreground" type="Sprite" parent="CanvasLayer"]
 position = Vector2( 960, 570 )
 scale = Vector2( 15, 15 )
+z_index = 100
 texture = ExtResource( 8 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/Hit = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 1 )

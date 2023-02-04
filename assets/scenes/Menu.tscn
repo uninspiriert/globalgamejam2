@@ -14,13 +14,12 @@ options_scene = ExtResource( 4 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -5.0
-margin_top = 5.0
-margin_right = -5.0
-margin_bottom = 5.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.345098, 0.243137, 0.243137, 1 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
