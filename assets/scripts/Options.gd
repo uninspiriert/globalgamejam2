@@ -20,6 +20,10 @@ func _ready():
 	labelMaster.text = str(round(mastervolume*100)) + "%"
 	labelMusic.text = str(round(musicvolume*100)) + "%"
 	labelEffects.text = str(round(effectsvolume*100)) + "%"
+	
+func _unhandled_input(event):
+	if event.is_action_pressed("ui_cancel"):
+		queue_free()
 
 func _on_SliderMaster_value_changed(value):
 	AudioServer.set_bus_volume_db(GameData._masterbus, linear2db(value))

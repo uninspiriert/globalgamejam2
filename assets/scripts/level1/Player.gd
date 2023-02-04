@@ -24,6 +24,9 @@ func apply_damage():
 func _process(_delta: float):
 	if Input.is_action_just_pressed("attack"):
 		anim.current_animation = "weapon_swipe"
+	if Input.is_action_just_pressed("dodge"):
+		pass
+#		anim.current_animation = "weapon_swipe"
 
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
@@ -50,4 +53,4 @@ func receive_damage():
 	health -= 1.0
 	get_parent().get_node("CanvasLayer/UI").on_player_life_changed(health)
 	if health <= 0.0:
-		get_tree().change_scene("res://assets/scenes/GameOver.tscn")
+		var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")

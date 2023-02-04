@@ -19,7 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Options" type="Label" parent="VContainer"]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 1 )
 text = "Options"
@@ -28,8 +28,8 @@ align = 1
 [node name="Panel" type="Panel" parent="VContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_top = 79.0
-margin_right = 1024.0
-margin_bottom = 515.0
+margin_right = 1920.0
+margin_bottom = 995.0
 size_flags_vertical = 3
 
 [node name="HContainer" type="HBoxContainer" parent="VContainer/Panel"]
@@ -42,24 +42,24 @@ anchor_bottom = 1.0
 columns = 3
 
 [node name="Master" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_top = 51.0
+margin_top = 171.0
 margin_right = 180.0
-margin_bottom = 126.0
+margin_bottom = 246.0
 custom_fonts/font = ExtResource( 1 )
 text = "Master"
 align = 1
 
 [node name="ContainerMasterSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
 margin_left = 184.0
-margin_right = 947.0
-margin_bottom = 177.0
+margin_right = 1843.0
+margin_bottom = 417.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="SliderMaster" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMasterSlider"]
-margin_top = 72.0
-margin_right = 763.0
-margin_bottom = 104.0
+margin_top = 192.0
+margin_right = 1659.0
+margin_bottom = 224.0
 focus_neighbour_bottom = NodePath("../../ContainerMusicSlider/SliderMusic")
 custom_icons/grabber_highlight = ExtResource( 2 )
 custom_icons/grabber = ExtResource( 4 )
@@ -67,33 +67,33 @@ max_value = 1.0
 step = 0.01
 
 [node name="ValMaster" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_left = 951.0
-margin_top = 51.0
-margin_right = 1024.0
-margin_bottom = 126.0
+margin_left = 1847.0
+margin_top = 171.0
+margin_right = 1920.0
+margin_bottom = 246.0
 custom_fonts/font = ExtResource( 1 )
 text = "0%"
 align = 1
 
 [node name="Music" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_top = 181.0
+margin_top = 421.0
 margin_right = 180.0
-margin_bottom = 256.0
+margin_bottom = 496.0
 custom_fonts/font = ExtResource( 1 )
 text = "Music"
 align = 1
 
 [node name="ContainerMusicSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
 margin_left = 184.0
-margin_top = 181.0
-margin_right = 947.0
-margin_bottom = 256.0
+margin_top = 421.0
+margin_right = 1843.0
+margin_bottom = 496.0
 size_flags_horizontal = 3
 alignment = 1
 
 [node name="SliderMusic" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerMusicSlider"]
 margin_top = 21.0
-margin_right = 763.0
+margin_right = 1659.0
 margin_bottom = 53.0
 focus_neighbour_top = NodePath("../../ContainerMasterSlider/SliderMaster")
 focus_neighbour_bottom = NodePath("../../ContainerEffectsSlider/SliderEffects")
@@ -103,35 +103,35 @@ max_value = 1.0
 step = 0.01
 
 [node name="ValMusic" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_left = 951.0
-margin_top = 181.0
-margin_right = 1024.0
-margin_bottom = 256.0
+margin_left = 1847.0
+margin_top = 421.0
+margin_right = 1920.0
+margin_bottom = 496.0
 custom_fonts/font = ExtResource( 1 )
 text = "0%"
 align = 1
 
 [node name="Effects" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_top = 310.0
+margin_top = 670.0
 margin_right = 180.0
-margin_bottom = 385.0
+margin_bottom = 745.0
 custom_fonts/font = ExtResource( 1 )
 text = "Effects"
 align = 1
 
 [node name="ContainerEffectsSlider" type="VBoxContainer" parent="VContainer/Panel/GridContainer"]
 margin_left = 184.0
-margin_top = 260.0
-margin_right = 947.0
-margin_bottom = 436.0
+margin_top = 500.0
+margin_right = 1843.0
+margin_bottom = 916.0
 size_flags_vertical = 3
 alignment = 1
 
 [node name="SliderEffects" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerEffectsSlider"]
 pause_mode = 2
-margin_top = 72.0
-margin_right = 763.0
-margin_bottom = 104.0
+margin_top = 192.0
+margin_right = 1659.0
+margin_bottom = 224.0
 focus_neighbour_top = NodePath("../../ContainerMusicSlider/SliderMusic")
 focus_neighbour_bottom = NodePath("../../../../Back")
 custom_icons/grabber_highlight = ExtResource( 2 )
@@ -140,19 +140,19 @@ max_value = 1.0
 step = 0.01
 
 [node name="ValEffects" type="Label" parent="VContainer/Panel/GridContainer"]
-margin_left = 951.0
-margin_top = 310.0
-margin_right = 1024.0
-margin_bottom = 385.0
+margin_left = 1847.0
+margin_top = 670.0
+margin_right = 1920.0
+margin_bottom = 745.0
 custom_fonts/font = ExtResource( 1 )
 text = "0%"
 align = 1
 
 [node name="Back" type="Button" parent="VContainer"]
 pause_mode = 2
-margin_top = 519.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_top = 999.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 focus_neighbour_top = NodePath("../Panel/GridContainer/ContainerEffectsSlider/SliderEffects")
 custom_fonts/font = ExtResource( 1 )
 text = "Back"

@@ -21,7 +21,7 @@ func start_game():
 	set_music()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("ui_cancel"):
+	if event.is_action_pressed("ui_home"):
 		if get_tree().paused == false and GameData.gamestate == GameData.GameState.INGAME:
 			var menu = menu_scene.instance()
 			add_child(menu)
