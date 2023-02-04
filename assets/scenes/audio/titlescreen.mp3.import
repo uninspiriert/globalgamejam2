@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/titlescreen.mp3-c2517c83f47dd0c7e5aa1ce62d7cf241.mp3str"
+
+[deps]
+
+source_file="res://assets/scenes/audio/titlescreen.mp3"
+dest_files=[ "res://.import/titlescreen.mp3-c2517c83f47dd0c7e5aa1ce62d7cf241.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

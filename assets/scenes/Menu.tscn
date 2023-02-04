@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sprites/tooth-menu-icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/Menu.gd" type="Script" id=3]
+[ext_resource path="res://assets/scenes/Options.tscn" type="PackedScene" id=4]
 
 [node name="Menu" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 3 )
+options_scene = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
@@ -22,7 +25,7 @@ margin_bottom = 600.0
 margin_right = 1024.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 1 )
-text = "Sweet Thooth"
+text = "Sweet Tooth"
 align = 1
 
 [node name="HContainer" type="HBoxContainer" parent="VBoxContainer"]
@@ -86,3 +89,7 @@ anchor_bottom = 1.0
 position = Vector2( 247, 267 )
 scale = Vector2( 6.17188, 6.17188 )
 texture = ExtResource( 2 )
+
+[connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]

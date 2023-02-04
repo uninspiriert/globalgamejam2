@@ -59,8 +59,10 @@ margin_top = 74.0
 margin_right = 763.0
 margin_bottom = 102.0
 focus_neighbour_bottom = NodePath("../../ContainerMusicSlider/SliderMusic")
+custom_icons/grabber_highlight = ExtResource( 2 )
 custom_icons/grabber = ExtResource( 2 )
-rounded = true
+max_value = 1.0
+step = 0.01
 
 [node name="ValMaster" type="Label" parent="VContainer/Panel/GridContainer"]
 margin_left = 951.0
@@ -93,8 +95,10 @@ margin_right = 763.0
 margin_bottom = 51.0
 focus_neighbour_top = NodePath("../../ContainerMasterSlider/SliderMaster")
 focus_neighbour_bottom = NodePath("../../ContainerEffectsSlider/SliderEffects")
+custom_icons/grabber_highlight = ExtResource( 2 )
 custom_icons/grabber = ExtResource( 2 )
-rounded = true
+max_value = 1.0
+step = 0.01
 
 [node name="ValMusic" type="Label" parent="VContainer/Panel/GridContainer"]
 margin_left = 951.0
@@ -122,13 +126,16 @@ size_flags_vertical = 3
 alignment = 1
 
 [node name="SliderEffects" type="HSlider" parent="VContainer/Panel/GridContainer/ContainerEffectsSlider"]
+pause_mode = 2
 margin_top = 74.0
 margin_right = 763.0
 margin_bottom = 102.0
 focus_neighbour_top = NodePath("../../ContainerMusicSlider/SliderMusic")
 focus_neighbour_bottom = NodePath("../../../../Back")
+custom_icons/grabber_highlight = ExtResource( 2 )
 custom_icons/grabber = ExtResource( 2 )
-rounded = true
+max_value = 1.0
+step = 0.01
 
 [node name="ValEffects" type="Label" parent="VContainer/Panel/GridContainer"]
 margin_left = 951.0
@@ -140,6 +147,7 @@ text = "0%"
 align = 1
 
 [node name="Back" type="Button" parent="VContainer"]
+pause_mode = 2
 margin_top = 519.0
 margin_right = 1024.0
 margin_bottom = 600.0
@@ -150,3 +158,4 @@ text = "Back"
 [connection signal="value_changed" from="VContainer/Panel/GridContainer/ContainerMasterSlider/SliderMaster" to="." method="_on_SliderMaster_value_changed"]
 [connection signal="value_changed" from="VContainer/Panel/GridContainer/ContainerMusicSlider/SliderMusic" to="." method="_on_SliderMusic_value_changed"]
 [connection signal="value_changed" from="VContainer/Panel/GridContainer/ContainerEffectsSlider/SliderEffects" to="." method="_on_SliderEffects_value_changed"]
+[connection signal="pressed" from="VContainer/Back" to="." method="_on_Back_pressed"]
