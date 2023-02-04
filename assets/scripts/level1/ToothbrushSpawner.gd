@@ -43,21 +43,21 @@ func brush():
 			rotation_degrees = 90
 			global_position = warn_rect.position
 			yield(get_tree().create_timer(WARN_TIME_SECS), "timeout")
-			toothbrush.brush()
+			toothbrush.brush_sides()
 		RIGHT:
 			var warn_rect = Rect2(get_viewport_rect().size.x - 0.5 * WARN_WIDTH, warn_offset, WARN_WIDTH, warn_len)
 			show_warning(warn_rect)
 			rotation_degrees = -90
 			global_position = warn_rect.position
 			yield(get_tree().create_timer(WARN_TIME_SECS), "timeout")
-			toothbrush.brush()
+			toothbrush.brush_sides()
 		BOTTOM:
 			var warn_rect = Rect2(warn_offset, get_viewport_rect().size.y - 0.5 * WARN_WIDTH, warn_len, WARN_WIDTH)
 			show_warning(warn_rect)
 			rotation_degrees = 0
 			global_position = warn_rect.position
 			yield(get_tree().create_timer(WARN_TIME_SECS), "timeout")
-			toothbrush.brush()
+			toothbrush.brush_bottom()
 
 func show_warning(rect: Rect2):
 	warn_sprite.global_position = rect.position
