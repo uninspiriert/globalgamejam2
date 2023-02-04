@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/sprites/bubble.png" type="Texture" id=1]
 [ext_resource path="res://assets/scripts/level1/Foam.gd" type="Script" id=2]
+[ext_resource path="res://assets/scenes/level1/BubbleProjectile.tscn" type="PackedScene" id=3]
 
 [sub_resource type="Gradient" id=2]
 colors = PoolColorArray( 0.75531, 0.768828, 0.878906, 1, 1, 1, 1, 1 )
@@ -26,6 +27,7 @@ hue_variation_random = 0.01
 scale = Vector2( 4, 4 )
 z_index = 300
 script = ExtResource( 2 )
+bubble = ExtResource( 3 )
 
 [node name="Particles2D" type="Particles2D" parent="."]
 emitting = false
