@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/impactGeneric_light_004.ogg-7577088834d54540d921995d6201b026.oggstr"
+
+[deps]
+
+source_file="res://assets/scenes/audio/impactGeneric_light_004.ogg"
+dest_files=[ "res://.import/impactGeneric_light_004.ogg-7577088834d54540d921995d6201b026.oggstr" ]
+
+[params]
+
+loop=false
+loop_offset=0

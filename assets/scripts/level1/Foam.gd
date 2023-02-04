@@ -11,7 +11,6 @@ func _ready():
 
 func _physics_process(_delta: float):
 	if not particles.is_emitting():
-		print("free")
 		queue_free()
 		return
 
