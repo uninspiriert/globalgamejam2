@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sprites/tooth-menu-icon.png" type="Texture" id=2]
 [ext_resource path="res://assets/scripts/Menu.gd" type="Script" id=3]
 [ext_resource path="res://assets/scenes/Options.tscn" type="PackedScene" id=4]
+[ext_resource path="res://resources/custom_button.tres" type="Theme" id=5]
 
 [node name="Menu" type="CanvasLayer"]
 pause_mode = 2
@@ -47,32 +48,39 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer"]
-margin_left = 151.0
-margin_top = 135.0
-margin_right = 359.0
-margin_bottom = 386.0
+margin_left = 155.0
+margin_top = 138.0
+margin_right = 355.0
+margin_bottom = 383.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Start" type="Button" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer"]
-margin_right = 208.0
-margin_bottom = 81.0
+margin_right = 200.0
+margin_bottom = 79.0
+theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
+button_mask = 0
 text = "Start"
+align = 2
 
 [node name="Options" type="Button" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer"]
-margin_top = 85.0
-margin_right = 208.0
-margin_bottom = 166.0
+margin_top = 83.0
+margin_right = 200.0
+margin_bottom = 162.0
+theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Options"
+align = 2
 
 [node name="Quit" type="Button" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer"]
-margin_top = 170.0
-margin_right = 208.0
-margin_bottom = 251.0
+margin_top = 166.0
+margin_right = 200.0
+margin_bottom = 245.0
+theme = ExtResource( 5 )
 custom_fonts/font = ExtResource( 1 )
 text = "Quit"
+align = 2
 
 [node name="PanelRechts" type="Panel" parent="VBoxContainer/HContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
@@ -82,14 +90,22 @@ margin_bottom = 521.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HContainer/PanelRechts"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+margin_left = 510.0
+margin_top = 134.0
+margin_right = 718.0
+margin_bottom = 134.0
 
 [node name="Tooth-menu-icon" type="Sprite" parent="VBoxContainer/HContainer/PanelRechts/CenterContainer"]
-position = Vector2( 247, 267 )
+position = Vector2( -310, 127 )
 scale = Vector2( 6.17188, 6.17188 )
 texture = ExtResource( 2 )
 
+[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="focus_entered" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_focus_entered"]
+[connection signal="focus_exited" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_focus_exited"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Quit" to="." method="_on_Quit_pressed"]
