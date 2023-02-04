@@ -114,7 +114,7 @@ speed = 500.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walking"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Sugarcane" parent="." instance=ExtResource( 3 )]
@@ -144,6 +144,11 @@ script = ExtResource( 5 )
 wait_time = 0.1
 one_shot = true
 
+[node name="Immobilized" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="bonk_moment_reached" from="AnimationPlayer" to="." method="on_bonk"]
 [connection signal="timeout" from="DashDuration" to="." method="_on_DashDuration_timeout"]
+[connection signal="timeout" from="Immobilized" to="." method="_on_Immobilized_timeout"]

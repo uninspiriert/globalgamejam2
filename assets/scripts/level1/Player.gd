@@ -4,14 +4,21 @@ export var speed: float = 10.0
 export var dash_speed: float = 1
 export var health: float = 3.0
 
+
+enum PlayerState{
+	NONE,
+	IMMOBILIZED
+}
+var playerState
+
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
-
 var screen_size
 
 func _ready():
-	screen_size = get_viewport_rect().size
+	playerState = PlayerState.NONE
+	screen_size = get_viewport_rect().size	
 	$DashCD.init(1)
 	canvasUI.on_player_life_changed(health)
 	anim.current_animation = "weapon_idle"
@@ -34,7 +41,8 @@ func _process(delta: float):
 
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
-
+#
+#	if playerState != PlayerState.IMMOBILIZED:
 	if Input.is_action_just_pressed("dodge") and $DashCD.is_ready():
 		$DashDuration.start()
 		dash_speed = 5
@@ -47,13 +55,9 @@ func _physics_process(_delta: float):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 
-	if get_slide_count() != 0 :
-		var force = 1000000
-		for i in range (0,get_slide_count()) :
-			velocity += get_slide_collision(0).normal * force
-			print(get_slide_collision(i))
-		
+	
 	velocity = move_and_slide(velocity.normalized() * speed * dash_speed)
+		
 		
 	if velocity.x != 0:
 		$AnimatedSprite.flip_h = velocity.x < 0
@@ -77,3 +81,6 @@ func receive_damage():
 
 func _on_DashDuration_timeout():
 	dash_speed = 1
+
+func _on_Immobilized_timeout():
+	playerState = PlayerState.NONE
