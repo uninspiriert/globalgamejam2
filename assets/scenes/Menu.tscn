@@ -12,18 +12,18 @@ script = ExtResource( 3 )
 options_scene = ExtResource( 4 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color( 0.345098, 0.243137, 0.243137, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-margin_right = 1024.0
-margin_bottom = 600.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Titel" type="Label" parent="VBoxContainer"]
-margin_right = 1024.0
+margin_right = 1920.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 1 )
 text = "Sweet Tooth"
@@ -31,15 +31,15 @@ align = 1
 
 [node name="HContainer" type="HBoxContainer" parent="VBoxContainer"]
 margin_top = 79.0
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1920.0
+margin_bottom = 1080.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="PanelLinks" type="Panel" parent="VBoxContainer/HContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_right = 510.0
-margin_bottom = 521.0
+margin_right = 958.0
+margin_bottom = 1001.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -48,10 +48,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer"]
-margin_left = 155.0
-margin_top = 138.0
-margin_right = 355.0
-margin_bottom = 383.0
+margin_left = 379.0
+margin_top = 378.0
+margin_right = 579.0
+margin_bottom = 623.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -84,20 +84,18 @@ align = 2
 
 [node name="PanelRechts" type="Panel" parent="VBoxContainer/HContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
-margin_left = 514.0
-margin_right = 1024.0
-margin_bottom = 521.0
+margin_left = 962.0
+margin_right = 1920.0
+margin_bottom = 1001.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HContainer/PanelRechts"]
-margin_left = 510.0
-margin_top = 134.0
-margin_right = 718.0
-margin_bottom = 134.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Tooth-menu-icon" type="Sprite" parent="VBoxContainer/HContainer/PanelRechts/CenterContainer"]
-position = Vector2( -310, 127 )
-scale = Vector2( 6.17188, 6.17188 )
+position = Vector2( 388.25, 488.25 )
+scale = Vector2( 11.3672, 11.3672 )
 texture = ExtResource( 2 )
 
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
