@@ -114,7 +114,7 @@ speed = 500.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walking"
-frame = 1
+frame = 3
 playing = true
 
 [node name="Sugarcane" parent="." instance=ExtResource( 3 )]

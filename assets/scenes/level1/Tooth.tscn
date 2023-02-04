@@ -7,7 +7,7 @@
 [ext_resource path="res://assets/sprites/tooth-top-damaged-1.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 11, 7 )
+extents = Vector2( 11, 13 )
 
 [node name="Tooth" type="StaticBody2D" groups=["teeth"]]
 script = ExtResource( 3 )

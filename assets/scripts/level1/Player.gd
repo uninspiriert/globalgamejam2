@@ -8,7 +8,10 @@ onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
 
+var screen_size
+
 func _ready():
+	screen_size = get_viewport_rect().size
 	$DashCD.init(1)
 	canvasUI.on_player_life_changed(health)
 	anim.current_animation = "weapon_idle"
@@ -44,7 +47,20 @@ func _physics_process(_delta: float):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 
+	if get_slide_count() != 0 :
+		var force = 1000000
+		for i in range (0,get_slide_count()) :
+			velocity += get_slide_collision(0).normal * force
+			print(get_slide_collision(i))
+		
 	velocity = move_and_slide(velocity.normalized() * speed * dash_speed)
+		
+	if velocity.x != 0:
+		$AnimatedSprite.flip_h = velocity.x < 0
+		$Sugarcane/Sprite.flip_h = velocity.x < 0
+		
+	position.x = clamp(position.x, 0, screen_size.x)
+	position.y = clamp(position.y, 0, screen_size.y)
 
 func on_bonk():
 	apply_damage()
