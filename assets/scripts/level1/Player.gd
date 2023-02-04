@@ -1,22 +1,18 @@
 extends KinematicBody2D
 
 export var speed: float = 10.0
+export var dash_speed: float = 1
 export var health: float = 3.0
-export var dashcd: float = 2
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
 
 func _ready():
-	canvasUI.max_dash_cd = dashcd
+	$DashCD.init(1)
 	canvasUI.on_player_life_changed(health)
 	anim.current_animation = "weapon_idle"
-	var _tickDashCD = $DashCD.connect("timeout",self,"progress_tick")
 	anim.play()
-	
-func progress_tick():
-	canvasUI.on_dashCD_changed(1)
 
 func apply_damage():
 	var tooth = null
@@ -28,17 +24,17 @@ func apply_damage():
 	if tooth != null:
 		tooth.increase_damage()
 
-func _process(_delta: float):
+func _process(delta: float):
+	$DashCD.tick(delta)
 	if Input.is_action_just_pressed("attack"):
 		anim.current_animation = "weapon_swipe"
-	if Input.is_action_just_pressed("dodge"):
-		canvasUI.reset_dashCD()
-		$DashCD.start()
-		print("dodge")
 
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
 
+	if Input.is_action_just_pressed("dodge") and $DashCD.is_ready():
+		$DashDuration.start()
+		dash_speed = 5
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
@@ -48,7 +44,7 @@ func _physics_process(_delta: float):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 
-	velocity = move_and_slide(velocity.normalized() * speed)
+	velocity = move_and_slide(velocity.normalized() * speed * dash_speed)
 
 func on_bonk():
 	apply_damage()
@@ -62,3 +58,6 @@ func receive_damage():
 	canvasUI.on_player_life_changed(health)
 	if health <= 0.0:
 		var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
+
+func _on_DashDuration_timeout():
+	dash_speed = 1
