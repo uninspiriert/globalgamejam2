@@ -74,10 +74,11 @@ func _on_AnimationPlayer_animation_finished(anim_name: String):
 		anim.current_animation = "weapon_idle"
 
 func receive_damage():
-	health -= 1.0
-	canvasUI.on_player_life_changed(health)
-	if health <= 0.0:
-		var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
+	if dash_speed == 1:
+		health -= 1.0
+		canvasUI.on_player_life_changed(health)
+		if health <= 0.0:
+			var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
 
 func _on_DashDuration_timeout():
 	dash_speed = 1

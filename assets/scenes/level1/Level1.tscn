@@ -6,15 +6,18 @@
 [ext_resource path="res://assets/sprites/fang-top-damaged-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/fang-top-damaged-2.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/fang-top-damaged-3.png" type="Texture" id=6]
-[ext_resource path="res://assets/scenes/level1/Toothbrush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scenes/level1/ToothbrushSpawner.tscn" type="PackedScene" id=8]
-[ext_resource path="res://assets/sprites/icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/mouth.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/front-top-damaged-2.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/front-top-damaged-1.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/front-tooth.png" type="Texture" id=13]
 [ext_resource path="res://assets/sprites/front-top-damaged-3.png" type="Texture" id=14]
 [ext_resource path="res://assets/scenes/UI.tscn" type="PackedScene" id=15]
+
+[sub_resource type="Gradient" id=1]
+
+[sub_resource type="GradientTexture2D" id=2]
+gradient = SubResource( 1 )
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 103, 93 )
@@ -72,8 +75,7 @@ damage_levels = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResou
 [node name="ToothbrushSpawner" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 2, 2 )
 z_index = 200
-toothbrush_scene = ExtResource( 7 )
-warning_texture = ExtResource( 9 )
+warning_texture = SubResource( 2 )
 
 [node name="Tooth6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1274, 20 )
