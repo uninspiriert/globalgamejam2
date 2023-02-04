@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/scenes/level1/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/level1/Tooth.tscn" type="PackedScene" id=2]
@@ -6,7 +6,11 @@
 [ext_resource path="res://assets/sprites/fang-top-damaged-1.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/fang-top-damaged-2.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/fang-top-damaged-3.png" type="Texture" id=6]
+<<<<<<< Updated upstream
 [ext_resource path="res://assets/scenes/level1/Toothbrush.tscn" type="PackedScene" id=7]
+=======
+[ext_resource path="res://assets/sprites/warning_rec.png" type="Texture" id=7]
+>>>>>>> Stashed changes
 [ext_resource path="res://assets/scenes/level1/ToothbrushSpawner.tscn" type="PackedScene" id=8]
 [ext_resource path="res://assets/sprites/icon.png" type="Texture" id=9]
 [ext_resource path="res://assets/sprites/mouth.png" type="Texture" id=10]
@@ -72,8 +76,12 @@ damage_levels = [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResou
 [node name="ToothbrushSpawner" parent="." instance=ExtResource( 8 )]
 scale = Vector2( 2, 2 )
 z_index = 200
+<<<<<<< Updated upstream
 toothbrush_scene = ExtResource( 7 )
 warning_texture = ExtResource( 9 )
+=======
+warning_texture = ExtResource( 7 )
+>>>>>>> Stashed changes
 
 [node name="Tooth6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1274, 20 )

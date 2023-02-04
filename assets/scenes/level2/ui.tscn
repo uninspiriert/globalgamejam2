@@ -23,7 +23,6 @@ texture = ExtResource( 2 )
 
 [node name="Progressbar" type="Sprite" parent="."]
 position = Vector2( 519.5, 564.125 )
-scale = Vector2( 0.81836, 0.191407 )
 texture = ExtResource( 6 )
 
 [node name="ProgressbarTooth" type="HSlider" parent="."]
