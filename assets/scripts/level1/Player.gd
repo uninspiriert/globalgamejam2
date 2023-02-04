@@ -2,14 +2,21 @@ extends KinematicBody2D
 
 export var speed: float = 10.0
 export var health: float = 3.0
+export var dashcd: float = 2
 
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
+onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
 
 func _ready():
-	get_parent().get_node("CanvasLayer/UI").on_player_life_changed(health)
+	canvasUI.max_dash_cd = dashcd
+	canvasUI.on_player_life_changed(health)
 	anim.current_animation = "weapon_idle"
+	var _tickDashCD = $DashCD.connect("timeout",self,"progress_tick")
 	anim.play()
+	
+func progress_tick():
+	canvasUI.on_dashCD_changed(1)
 
 func apply_damage():
 	var tooth = null
@@ -25,8 +32,9 @@ func _process(_delta: float):
 	if Input.is_action_just_pressed("attack"):
 		anim.current_animation = "weapon_swipe"
 	if Input.is_action_just_pressed("dodge"):
-		pass
-#		anim.current_animation = "weapon_swipe"
+		canvasUI.reset_dashCD()
+		$DashCD.start()
+		print("dodge")
 
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
@@ -51,6 +59,6 @@ func _on_AnimationPlayer_animation_finished(anim_name: String):
 
 func receive_damage():
 	health -= 1.0
-	get_parent().get_node("CanvasLayer/UI").on_player_life_changed(health)
+	canvasUI.on_player_life_changed(health)
 	if health <= 0.0:
 		var _gameover = get_tree().change_scene("res://assets/scenes/GameOver.tscn")
