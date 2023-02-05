@@ -6,7 +6,7 @@ onready var slider = $QE/Slider
 onready var shaker = $Camera2D/ShakeCamera
 onready var gamewon = load("res://assets/scenes/GameEnd.tscn")
 onready var gameover = load("res://assets/scenes/GameOver.tscn")
-var rem_hitpoints = 10
+var rem_hitpoints = 30
 onready var lable_rem_hitpoints = $Camera2D/HBoxContainer/Value
 var velocity :float = 0.0
 var rndweight
@@ -18,9 +18,10 @@ func _ready():
 	pass
 
 func _input(event):
+	var rndpower = rand_range(0,10)
 	var inputval = 0.0
 	if event.is_action("attack"):
-		inputval = -20
+		inputval = -(20+rndpower)
 	if event.is_action_pressed("attack"):
 		rem_hitpoints -= 1
 		btnA.scale = Vector2(9,9)
@@ -29,7 +30,7 @@ func _input(event):
 		btnA.scale = Vector2(10,10)
 
 	if event.is_action("dodge"):
-		inputval = 20
+		inputval = 20+rndpower
 	if event.is_action_pressed("dodge"):
 		rem_hitpoints -= 1
 		btnB.scale = Vector2(9,9)
@@ -40,6 +41,12 @@ func _input(event):
 	lable_rem_hitpoints.text = str(rem_hitpoints)
 
 func _process(delta):
+	var inc_vel = 0.0
+	if slider.value <= 50:
+		inc_vel = 1+(51-slider.value)/1000
+	else:
+		inc_vel = 1+(slider.value-50)/1000
+	velocity *= inc_vel
 	slider.value += velocity*delta
 	if slider.value == 0 or slider.value == 100:
 		var _gameover = get_tree().change_scene_to(gameover)

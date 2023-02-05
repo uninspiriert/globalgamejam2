@@ -247,6 +247,7 @@ alignment = 1
 margin_right = 958.0
 margin_bottom = 81.0
 focus_neighbour_top = NodePath("../../HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore")
+focus_neighbour_bottom = NodePath("../Quit")
 focus_next = NodePath("../Quit")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
