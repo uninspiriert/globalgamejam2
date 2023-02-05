@@ -24,6 +24,7 @@ func increase_damage() -> bool:
 		blood.scale = scale
 		blood.z_index = z_index
 		get_parent().add_child(blood)
+		$"../ToothbrushSpawner".adjust_timers()
 		queue_free()
 		return true
 

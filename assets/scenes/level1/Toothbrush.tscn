@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/scenes/level1/Foam.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 36, 95.875 )
+extents = Vector2( 25.25, 95.875 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "brush_bottom"
@@ -38,7 +38,7 @@ tracks/0/keys = {
 }
 
 [node name="Toothbrush" type="Area2D"]
-position = Vector2( 0, 200 )
+position = Vector2( 0, 100 )
 script = ExtResource( 2 )
 foam = ExtResource( 3 )
 

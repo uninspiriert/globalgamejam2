@@ -14,7 +14,7 @@ func _physics_process(_delta: float):
 		queue_free()
 		return
 
-	if rng.randi_range(1, 200) == 1:
+	if rng.randi_range(1, 180) == 1:
 		var micheal = bubble.instance().init(Vector2(rng.randi() - 2147483647.5, rng.randi() - 2147483647.5))
 		micheal.global_position = global_position
 		micheal.scale = scale
