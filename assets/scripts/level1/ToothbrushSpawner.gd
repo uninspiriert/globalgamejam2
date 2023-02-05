@@ -10,7 +10,7 @@ export(float) var wait_time_addition = 0.5
 var rng = RandomNumberGenerator.new()
 var toothbrush = null
 onready var warn_sprite = Sprite.new()
-onready var timer = $Timer
+onready var spawn_timer = $Timer
 
 const LEFT = 0
 const RIGHT = 1
@@ -21,7 +21,7 @@ const MIN_WARN_TIME = 0.2
 const MAX_WARN_TIME = 1.0
 # const MIN_WAIT_TIME = 0.4
 
-var num_teeth_initial = 16
+var num_teeth_initial = 16.0
 var num_teeth = num_teeth_initial
 var warn_time_secs = 1.0
 
@@ -42,12 +42,12 @@ func _ready():
 
 func adjust_timers():
 	num_teeth -= 1
-	var steps = float(num_teeth_initial - num_teeth) / 16.0
-	warn_time_secs = lerp(MAX_WARN_TIME, MIN_WARN_TIME, ease(steps, 4))
-	timer.wait_time = anime_length + warn_time_secs + wait_time_addition
+	var steps = float(num_teeth_initial - num_teeth) / num_teeth_initial
+	warn_time_secs = lerp(MAX_WARN_TIME, MIN_WARN_TIME, ease(steps, 3))
+	spawn_timer.wait_time = anime_length + warn_time_secs + wait_time_addition
 
 func brush():
-	timer.stop()
+	spawn_timer.stop()
 	var w = get_viewport_rect().size.x
 	var h = get_viewport_rect().size.y
 
@@ -81,23 +81,32 @@ func brush():
 			show_warning(warn_rect)
 			rotation_degrees = 90
 			global_position = warn_rect.position
-			yield(get_tree().create_timer(warn_time_secs), "timeout")
-			toothbrush.brush_sides()
+			wait_then_brush("brush_sides")
 		RIGHT:
 			var warn_rect = Rect2(get_viewport_rect().size.x - 0.5 * WARN_WIDTH, warn_offset, WARN_WIDTH, warn_len)
 			show_warning(warn_rect)
 			rotation_degrees = -90
 			global_position = warn_rect.position
-			yield(get_tree().create_timer(warn_time_secs), "timeout")
-			toothbrush.brush_sides()
+			wait_then_brush("brush_sides")
 		BOTTOM:
 			var warn_rect = Rect2(warn_offset, get_viewport_rect().size.y - 0.5 * WARN_WIDTH, warn_len, WARN_WIDTH)
 			show_warning(warn_rect)
 			rotation_degrees = 0
 			global_position = warn_rect.position
-			yield(get_tree().create_timer(warn_time_secs), "timeout")
-			toothbrush.brush_bottom()
-	timer.start()
+			wait_then_brush("brush_bottom")
+
+func wait_then_brush(brush_type: String):
+	var timer = Timer.new()
+	timer.set_one_shot(true)
+	timer.connect("timeout", self, "do_the_brushing", [timer, brush_type])
+	add_child(timer)
+	timer.start(warn_time_secs)
+
+func do_the_brushing(timer, brush_type):
+	toothbrush.call(brush_type)
+	timer.stop()
+	remove_child(timer)
+	spawn_timer.start()
 
 func show_warning(rect: Rect2):
 	warn_sprite.global_position = rect.position

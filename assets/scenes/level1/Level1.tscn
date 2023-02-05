@@ -86,7 +86,7 @@ scale = Vector2( 2, 2 )
 z_index = 200
 toothbrush_scene = ExtResource( 7 )
 warning_texture = SubResource( 2 )
-wait_time_addition = 0.01
+wait_time_addition = 0.1
 
 [node name="Tooth6" parent="." instance=ExtResource( 2 )]
 position = Vector2( 1274, 20 )
