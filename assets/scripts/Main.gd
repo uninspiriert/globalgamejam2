@@ -19,6 +19,7 @@ func start_game():
 	add_child(level1)
 	get_tree().paused = false
 	set_music()
+	GameData.start_time = OS.get_unix_time()
 
 func _unhandled_input(event):
 	if event.is_action_pressed("ui_home"):

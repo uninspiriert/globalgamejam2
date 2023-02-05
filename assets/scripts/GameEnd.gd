@@ -5,6 +5,7 @@ var score
 var saveFile: File
 var savePath = "user://Score.json"
 var customfont
+var total_time_seconds
 
 func _ready():
 
@@ -13,7 +14,8 @@ func _ready():
 	customfont.size = 20
 	_loadHighScore(null)
 	TName = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
-	set_highscore(OS.get_ticks_msec()/1000.0)
+	total_time_seconds = OS.get_unix_time() - GameData.start_time
+	set_highscore(float(GameData.rem_life) * 10000.0 / total_time_seconds)
 	
 
 func _process(_delta):
@@ -30,7 +32,7 @@ func set_highscore(highscore):
 	LHighscore.text = str(highscore*GameData.rem_life)
 	
 	var stats_time = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LTimeScoreVal
-	stats_time.text = str(highscore)
+	stats_time.text = str(total_time_seconds)
 	
 	var stats_lifes = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LLifeScoreVal
 	stats_lifes.text = str(GameData.rem_life)
