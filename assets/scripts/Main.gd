@@ -8,6 +8,7 @@ func _ready():
 
 func init():
 	get_tree().paused = true
+	GameData.start_time = OS.get_time()
 	set_music()
 	GameData.gamestate = GameData.GameState.INIT
 	var menu = menu_scene.instance()

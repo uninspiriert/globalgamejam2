@@ -224,29 +224,17 @@ margin_bottom = 1080.0
 alignment = 1
 
 [node name="Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_right = 637.0
+margin_right = 958.0
 margin_bottom = 81.0
 focus_neighbour_top = NodePath("../../HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore")
-focus_neighbour_bottom = NodePath("../Options")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Menu"
 
-[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 641.0
-margin_right = 1278.0
-margin_bottom = 81.0
-focus_neighbour_top = NodePath("../Menu")
-focus_neighbour_bottom = NodePath("../Quit")
-size_flags_horizontal = 3
-custom_fonts/font = ExtResource( 2 )
-text = "Options"
-
 [node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer"]
-margin_left = 1282.0
+margin_left = 962.0
 margin_right = 1920.0
 margin_bottom = 81.0
-focus_neighbour_top = NodePath("../Options")
 size_flags_horizontal = 3
 custom_fonts/font = ExtResource( 2 )
 text = "Quit"
@@ -255,7 +243,7 @@ text = "Quit"
 self_modulate = Color( 1, 1, 1, 0.862745 )
 margin_top = 163.0
 margin_right = 1273.0
-margin_bottom = 994.0
+margin_bottom = 901.0
 
 [node name="Label" type="Label" parent="NoHighscore"]
 anchor_right = 1.0
@@ -267,5 +255,4 @@ valign = 1
 
 [connection signal="pressed" from="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore" to="." method="_on_PostScore_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Menu" to="." method="_on_Menu_pressed"]
-[connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
 [connection signal="pressed" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_Quit_pressed"]

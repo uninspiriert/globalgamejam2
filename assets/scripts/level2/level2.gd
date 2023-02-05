@@ -4,7 +4,9 @@ onready var btnA = $QE/AButton
 onready var btnB = $QE/BButton
 onready var slider = $QE/Slider
 onready var shaker = $Camera2D/ShakeCamera
-var rem_hitpoints = 50
+onready var gamewon = load("res://assets/scenes/GameEnd.tscn")
+onready var gameover = load("res://assets/scenes/GameOver.tscn")
+var rem_hitpoints = 10
 onready var lable_rem_hitpoints = $Camera2D/HBoxContainer/Value
 var velocity :float = 0.0
 var rndweight
@@ -21,7 +23,6 @@ func _input(event):
 		inputval = -10
 	if event.is_action_pressed("attack"):
 		rem_hitpoints -= 1
-#		$AnimationPlayer.ANIMA
 		btnA.scale = Vector2(9,9)
 		$AnimationPlayer.play("Hit")
 	if event.is_action_released("attack"):
@@ -31,7 +32,6 @@ func _input(event):
 		inputval = 10
 	if event.is_action_pressed("dodge"):
 		rem_hitpoints -= 1
-#		$AnimationPlayer.stop("Hit")		
 		btnB.scale = Vector2(9,9)
 		$AnimationPlayer.play("Hit")
 	if event.is_action_released("dodge"):
@@ -41,6 +41,8 @@ func _input(event):
 
 func _process(delta):
 	slider.value += velocity*delta
+	if slider.value == 0 or slider.value == 100:
+		var _gameover = get_tree().change_scene_to(gameover)
 	if rem_hitpoints == 0:
-		pass
-#		get_tree().change_scene_to()
+		GameData.end_time = OS.get_time()
+		var _gamewon = get_tree().change_scene_to(gamewon)

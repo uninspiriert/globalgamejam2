@@ -117,7 +117,7 @@ health = 4.0
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walking"
-frame = 3
+frame = 2
 playing = true
 
 [node name="Sugarcane" parent="." instance=ExtResource( 3 )]

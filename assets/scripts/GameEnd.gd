@@ -1,7 +1,5 @@
 extends CanvasLayer
 
-export(PackedScene) var options_scene
-#onready var TName = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
 var TName
 var score
 var saveFile: File
@@ -9,8 +7,11 @@ var savePath = "user://Score.json"
 var customfont
 
 func _ready():
+	print(GameData.start_time)
+	print(GameData.end_time)
+#	print(GameData.end_time - GameData.start_time)
 	customfont = DynamicFont.new()
-	customfont.font_data = load("res://Font/Xolonium-Regular.ttf")
+	customfont.font_data = load("res://resources/Oranienbaum-Regular.ttf")
 	customfont.size = 20
 	_loadHighScore(null)
 	TName = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
@@ -28,28 +29,18 @@ func set_highscore(highscore):
 	var LHighscore = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/HBoxContainer/HighscoreValue
 	LHighscore.text = str(highscore)
 	
-	var statskilled = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LEnemyScoreVal
-	statskilled.text = str(highscore)
+	var stats_time = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LEnemyScoreVal
+	stats_time.text = str(GameData.end_time - GameData.start_time)
 
 func _on_Menu_pressed():
-	GameData.effects_menu_press.play()
-	var _main = get_tree().change_scene("res://Scenes/Main.tscn")
-
-
-func _on_Options_pressed():
-	GameData.effects_menu_press.play()
-	var options = options_scene.instance()
-	get_tree().current_scene.add_child(options)
-	hide()
+	var _main = get_tree().change_scene("res://assets/scenes/Main.tscn")
 
 
 func _on_Quit_pressed():
-	GameData.effects_menu_press.play()
 	get_tree().quit()
 
 
 func _on_PostScore_pressed():
-	GameData.effects_menu_press.play()
 	var savebutton = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore
 	savebutton.text = "Posted"
 	TName.editable = false

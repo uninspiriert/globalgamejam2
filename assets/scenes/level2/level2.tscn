@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/scenes/audio/game.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/sprites/icon.png" type="Texture" id=3]
+[ext_resource path="res://assets/sprites/bacteria.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/sugar-cane.png" type="Texture" id=4]
 [ext_resource path="res://assets/sprites/level2-tooth_big_noright.png" type="Texture" id=5]
 [ext_resource path="res://assets/sprites/level2-tooth_smolright.png" type="Texture" id=6]
@@ -25,6 +25,7 @@ region_rect = Rect2( -0.0138245, 0, 1024.22, 64 )
 [sub_resource type="Animation" id=1]
 resource_name = "Hit"
 length = 0.5
+loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cane:rotation_degrees")
 tracks/0/interp = 1
@@ -71,7 +72,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 0.2, 0.5 ),
 "transitions": PoolRealArray( 1, 2, 1 ),
 "update": 0,
-"values": [ Vector2( 6, 8 ), Vector2( 6, 6 ), Vector2( 6, 8 ) ]
+"values": [ Vector2( 18, 18 ), Vector2( 18, 16 ), Vector2( 18, 18 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Icon:position")
@@ -158,7 +159,7 @@ value = 50.0
 
 [node name="Miniarrow" type="Sprite" parent="QE"]
 self_modulate = Color( 1, 1, 1, 0.705882 )
-position = Vector2( 566.268, 970 )
+position = Vector2( 572, 970 )
 scale = Vector2( 10, 10 )
 texture = ExtResource( 14 )
 
@@ -175,7 +176,7 @@ texture = ExtResource( 9 )
 
 [node name="Miniarrow2" type="Sprite" parent="QE"]
 self_modulate = Color( 1, 1, 1, 0.705882 )
-position = Vector2( 1345.73, 966 )
+position = Vector2( 1340, 966 )
 scale = Vector2( -10, 10 )
 texture = ExtResource( 14 )
 
@@ -208,8 +209,8 @@ z_as_relative = false
 texture = ExtResource( 5 )
 
 [node name="Icon" type="Sprite" parent="."]
-position = Vector2( 1421, 490 )
-scale = Vector2( 6, 8 )
+position = Vector2( 1421, 405 )
+scale = Vector2( 18, 18 )
 z_as_relative = false
 texture = ExtResource( 3 )
 

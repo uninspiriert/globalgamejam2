@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://assets/scenes/level1/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/scenes/level1/Tooth.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/sprites/fang-top-damaged-3.png" type="Texture" id=6]
 [ext_resource path="res://assets/scenes/level1/Toothbrush.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/scenes/level1/ToothbrushSpawner.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/scripts/level1/Level1.gd" type="Script" id=9]
 [ext_resource path="res://assets/sprites/mouth.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/front-top-damaged-2.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/front-top-damaged-1.png" type="Texture" id=12]
@@ -15,6 +16,7 @@
 [ext_resource path="res://assets/sprites/front-top-damaged-3.png" type="Texture" id=14]
 [ext_resource path="res://assets/scenes/UI.tscn" type="PackedScene" id=15]
 [ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/scenes/level2/level2.tscn" type="PackedScene" id=17]
 
 [sub_resource type="Gradient" id=1]
 colors = PoolColorArray( 0.746094, 0.297272, 0.697004, 1, 0.112152, 0.130202, 0.574219, 1 )
@@ -24,6 +26,8 @@ gradient = SubResource( 1 )
 
 [node name="Level1" type="Node2D"]
 position = Vector2( 103, 93 )
+script = ExtResource( 9 )
+level2_scene = ExtResource( 17 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
@@ -44,7 +48,7 @@ texture = ExtResource( 10 )
 position = Vector2( 223, 344 )
 scale = Vector2( 4, 4 )
 z_index = 100
-health = 3.0
+health = 30.0
 
 [node name="Tooth" parent="." instance=ExtResource( 2 )]
 position = Vector2( 466, 22 )
