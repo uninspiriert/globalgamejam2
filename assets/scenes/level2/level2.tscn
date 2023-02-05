@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/scenes/audio/game.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=2]
@@ -15,12 +15,56 @@
 [ext_resource path="res://assets/scripts/level2/level2.gd" type="Script" id=13]
 [ext_resource path="res://assets/sprites/level2/Miniarrow.png" type="Texture" id=14]
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=15]
+[ext_resource path="res://resources/Oranienbaum-Regular.ttf" type="DynamicFontData" id=16]
+[ext_resource path="res://assets/sprites/level2-tooth_whole.png" type="Texture" id=17]
+[ext_resource path="res://assets/scenes/level1/BloodSplatter.tscn" type="PackedScene" id=18]
+
+[sub_resource type="DynamicFont" id=5]
+size = 196
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 16 )
 
 [sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 11 )
 region_rect = Rect2( -0.0138245, 0, 1024.22, 64 )
 
 [sub_resource type="StyleBoxEmpty" id=3]
+
+[sub_resource type="Animation" id=6]
+resource_name = "TakeOff"
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("../Toof:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 963, -0.25, 0, 0.5, -475.511, -322.786, -0.5, 184.884, 0.25, 0 ),
+"times": PoolRealArray( -0.1, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("../Toof:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 684, -0.25, 0, 0.3, -655.636, -208.426, -0.8, 154.793, 0.25, 0 ),
+"times": PoolRealArray( -0.1, 1 )
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("../Toof:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( -0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -141.9 ]
+}
 
 [sub_resource type="Animation" id=1]
 resource_name = "Hit"
@@ -117,6 +161,7 @@ tracks/1/keys = {
 
 [node name="level2" type="Node2D"]
 script = ExtResource( 13 )
+bloodspawn = ExtResource( 18 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
@@ -144,6 +189,14 @@ valign = 1
 
 [node name="QE" type="CanvasLayer" parent="."]
 layer = 2
+
+[node name="Message" type="Label" parent="QE"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 5 )
+text = "GET READY!"
+align = 1
+valign = 1
 
 [node name="Slider" type="HSlider" parent="QE"]
 anchor_top = 0.5
@@ -202,8 +255,17 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="Toof" type="Sprite" parent="."]
+visible = false
+position = Vector2( 860.474, 465.027 )
+rotation = -0.225147
+scale = Vector2( 15, 15 )
+texture = ExtResource( 17 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="Toof"]
+
 [node name="Tooth" type="Sprite" parent="."]
-position = Vector2( 961, 684 )
+position = Vector2( 963, 684 )
 scale = Vector2( 15, 15 )
 z_as_relative = false
 texture = ExtResource( 5 )
@@ -223,7 +285,7 @@ texture = ExtResource( 4 )
 flip_h = true
 
 [node name="ToothRight" type="Sprite" parent="."]
-position = Vector2( 961, 684 )
+position = Vector2( 963, 684 )
 scale = Vector2( 15, 15 )
 z_as_relative = false
 texture = ExtResource( 6 )
@@ -239,6 +301,10 @@ __meta__ = {
 "_edit_lock_": true
 }
 
+[node name="AnimationPlayerEnd" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+anims/TakeOff = SubResource( 6 )
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 method_call_mode = 1
 anims/Hit = SubResource( 1 )
@@ -252,4 +318,20 @@ anims/arrowmovement = SubResource( 4 )
 [node name="Tween" type="Tween" parent="."]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+pause_mode = 2
 stream = ExtResource( 1 )
+bus = "Music"
+
+[node name="StartTimer" type="Timer" parent="."]
+pause_mode = 2
+autostart = true
+
+[node name="SceneChange" type="Timer" parent="."]
+one_shot = true
+
+[node name="Bloodspawn" type="Position2D" parent="."]
+position = Vector2( 942, 761 )
+
+[connection signal="screen_exited" from="Toof/VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="SceneChange" to="." method="_on_SceneChange_timeout"]
