@@ -1,6 +1,5 @@
 [gd_scene load_steps=25 format=2]
 
-[ext_resource path="res://assets/scenes/audio/game.mp3" type="AudioStream" id=1]
 [ext_resource path="res://assets/scenes/ShakyScreen.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/sprites/bacteria.png" type="Texture" id=3]
 [ext_resource path="res://assets/sprites/sugar-cane.png" type="Texture" id=4]
@@ -131,11 +130,26 @@ tracks/4/keys = {
 "values": [ Vector2( 1421, 405 ), Vector2( 1421, 490 ) ]
 }
 
+[sub_resource type="Animation" id=7]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 573, 966 ) ]
+}
+
 [sub_resource type="Animation" id=4]
 resource_name = "arrowmovement"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("../QE/Miniarrow:position")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -144,10 +158,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5 ),
 "transitions": PoolRealArray( 1, 3.13834 ),
 "update": 0,
-"values": [ Vector2( 572, 970 ), Vector2( 562, 970 ) ]
+"values": [ Vector2( 572, 966 ), Vector2( 562, 966 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("../QE/Miniarrow2:position")
+tracks/1/path = NodePath("../Miniarrow2:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -212,8 +226,15 @@ value = 50.0
 
 [node name="Miniarrow" type="Sprite" parent="QE"]
 self_modulate = Color( 1, 1, 1, 0.705882 )
-position = Vector2( 572, 970 )
+position = Vector2( 573, 966 )
 scale = Vector2( 10, 10 )
+texture = ExtResource( 14 )
+
+[node name="Miniarrow2" type="Sprite" parent="QE"]
+self_modulate = Color( 1, 1, 1, 0.705882 )
+position = Vector2( 1340, 966 )
+rotation = -3.14159
+scale = Vector2( 10, -10 )
 texture = ExtResource( 14 )
 
 [node name="AButton" type="Sprite" parent="QE"]
@@ -226,12 +247,6 @@ texture = ExtResource( 10 )
 position = Vector2( 1240, 968 )
 scale = Vector2( 10, 10 )
 texture = ExtResource( 9 )
-
-[node name="Miniarrow2" type="Sprite" parent="QE"]
-self_modulate = Color( 1, 1, 1, 0.705882 )
-position = Vector2( 1340, 966 )
-scale = Vector2( -10, 10 )
-texture = ExtResource( 14 )
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
@@ -310,17 +325,14 @@ method_call_mode = 1
 anims/Hit = SubResource( 1 )
 
 [node name="AnimationPlayerArrows" type="AnimationPlayer" parent="."]
-root_node = NodePath("../AudioStreamPlayer")
+pause_mode = 2
+root_node = NodePath("../QE/Miniarrow")
 autoplay = "arrowmovement"
 method_call_mode = 1
+anims/RESET = SubResource( 7 )
 anims/arrowmovement = SubResource( 4 )
 
 [node name="Tween" type="Tween" parent="."]
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-pause_mode = 2
-stream = ExtResource( 1 )
-bus = "Music"
 
 [node name="StartTimer" type="Timer" parent="."]
 pause_mode = 2

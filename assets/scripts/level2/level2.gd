@@ -14,7 +14,6 @@ var countdown = 3
 export(PackedScene) var bloodspawn
 
 func _ready():
-	$AudioStreamPlayer.play()
 	get_tree().paused = true
 	lable_rem_hitpoints.text = str(rem_hitpoints)
 	rndweight = rand_range(-15, 15)
@@ -45,7 +44,8 @@ func _input(event):
 	if event.is_action_released("dodge"):
 		btnB.scale = Vector2(10,10)
 	velocity += inputval
-	lable_rem_hitpoints.text = str(rem_hitpoints)
+	if rem_hitpoints >= 0:
+		lable_rem_hitpoints.text = str(rem_hitpoints)
 
 func _process(delta):
 	var inc_vel = 0.0
@@ -56,7 +56,10 @@ func _process(delta):
 	velocity *= inc_vel
 	slider.value += velocity*delta
 	if slider.value == 0 or slider.value == 100:
-		var _gameover = get_tree().change_scene_to(gameover)
+		if $Tooth.visible == false:
+			pass
+		else:
+			var _gameover = get_tree().change_scene_to(gameover)
 	if rem_hitpoints == 0:
 		level_success()
 
