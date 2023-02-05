@@ -90,7 +90,7 @@ func _on_VisibilityNotifier2D_screen_exited():
 	$SceneChange.start()
 	$AnimationPlayer.current_animation = "[stop]"
 	$AnimationPlayerEnd.current_animation = "[stop]"
-	remove_child($Toof)
+	call_deferred("remove_child", $Toof)
 
 
 
