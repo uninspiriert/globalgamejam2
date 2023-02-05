@@ -85,38 +85,41 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="StatsMarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer"]
-margin_right = 287.0
+margin_right = 1267.0
 margin_bottom = 738.0
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxStatsContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer"]
-margin_right = 287.0
+margin_right = 1267.0
 margin_bottom = 738.0
 size_flags_horizontal = 3
 
 [node name="StatsGridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer"]
-margin_right = 287.0
+margin_right = 1267.0
 margin_bottom = 738.0
 size_flags_horizontal = 3
 columns = 2
 
 [node name="VContainerNames" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer"]
-margin_right = 144.0
+margin_right = 632.0
 margin_bottom = 75.0
+size_flags_horizontal = 3
 
 [node name="NameHeadline" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer/VContainerNames"]
-margin_right = 144.0
+margin_right = 632.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 2 )
 text = "Name"
 
 [node name="VContainerScores" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer"]
-margin_left = 148.0
-margin_right = 287.0
+margin_left = 636.0
+margin_right = 1267.0
 margin_bottom = 75.0
+size_flags_horizontal = 3
 
 [node name="ScoreHeadline" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer/VContainerScores"]
-margin_right = 139.0
+margin_right = 631.0
 margin_bottom = 75.0
 custom_fonts/font = ExtResource( 2 )
 text = "Score"
@@ -259,6 +262,7 @@ custom_fonts/font = ExtResource( 2 )
 text = "Quit"
 
 [node name="NoHighscore" type="Panel" parent="."]
+visible = false
 self_modulate = Color( 1, 1, 1, 0.862745 )
 margin_top = 163.0
 margin_right = 1273.0

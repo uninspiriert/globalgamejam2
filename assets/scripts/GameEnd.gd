@@ -1,9 +1,9 @@
 extends CanvasLayer
 
-var TName
+var tname
 var score
-var saveFile: File
-var savePath = "user://Score.json"
+var savefile: File
+var savepath = "user://Score.json"
 var customfont
 var total_time_seconds
 
@@ -11,17 +11,17 @@ func _ready():
 
 	customfont = DynamicFont.new()
 	customfont.font_data = load("res://resources/Oranienbaum-Regular.ttf")
-	customfont.size = 20
+	customfont.size = 48
 	_loadHighScore(null)
-	TName = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
+	tname = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/tname
 	total_time_seconds = OS.get_unix_time() - GameData.start_time
 	set_highscore(float(GameData.rem_life) * 10000.0 / total_time_seconds)
 	
 
 func _process(_delta):
-	if TName.get_focus_owner() == null and TName.focus_mode == 2:
-		TName.grab_focus()
-	elif TName.get_focus_owner() == null:
+	if tname.get_focus_owner() == null and tname.focus_mode == 2:
+		tname.grab_focus()
+	elif tname.get_focus_owner() == null:
 		var menu = $VBoxContainer/HBoxContainer/Menu
 		menu.grab_focus()
 		
@@ -48,8 +48,8 @@ func _on_Quit_pressed():
 func _on_PostScore_pressed():
 	var savebutton = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore
 	savebutton.text = "Posted"
-	TName.editable = false
-	TName.focus_mode = false
+	tname.editable = false
+	tname.focus_mode = false
 	savebutton.disabled = true
 	savebutton.focus_mode = false
 	_saveHighScore()
@@ -65,11 +65,11 @@ func _loadHighScore(scoreData):
 	delete_children(containerNames)
 	delete_children(containerScores)
 	var openFile: File = File.new()
-	if not openFile.file_exists(savePath):
+	if not openFile.file_exists(savepath):
 		$NoHighscore.visible = true
 	else:
 		$NoHighscore.visible = false
-		var _openfile = openFile.open(savePath, File.READ)
+		var _openfile = openFile.open(savepath, File.READ)
 		var dataArray: Array = []
 		
 		while openFile.get_position() < openFile.get_len():
@@ -100,17 +100,17 @@ func _customSort(a,b):
 
 
 func _saveHighScore():
-	saveFile = File.new()
+	savefile = File.new()
 	var scoreData: Dictionary ={
-			"name": TName.text,
+			"name": tname.text,
 			"score": score,
 			"date": OS.get_datetime()
 		}
-	if saveFile.file_exists(savePath):
-		var _savefile = saveFile.open(savePath, File.READ_WRITE)
-		saveFile.seek_end()
+	if savefile.file_exists(savepath):
+		var _savefile = savefile.open(savepath, File.READ_WRITE)
+		savefile.seek_end()
 	else:
-		var _savefile = saveFile.open(savePath, File.WRITE)
-	saveFile.store_line(to_json(scoreData))
-	saveFile.close()
+		var _savefile = savefile.open(savepath, File.WRITE)
+	savefile.store_line(to_json(scoreData))
+	savefile.close()
 	_loadHighScore(scoreData)
