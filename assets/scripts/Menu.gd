@@ -41,21 +41,3 @@ func _on_Quit_pressed():
 		var _restart = get_tree().change_scene_to(restart)
 	elif state == GameData.GameState.INIT:
 		get_tree().quit()
-
-#func _on_Start_focus_entered():
-#	btnStart.icon = icon_selection
-#
-#func _on_Start_focus_exited():
-#	btnStart.icon = null
-#
-#func _on_Options_focus_entered():
-#	btnOptions.icon = icon_selection
-#
-#func _on_Options_focus_exited():
-#	btnOptions.icon = null
-#
-#func _on_Quit_focus_entered():
-#	btnQuit.icon = icon_selection
-#
-#func _on_Quit_focus_exited():
-#	btnQuit.icon = null

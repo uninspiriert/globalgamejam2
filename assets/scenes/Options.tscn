@@ -12,7 +12,7 @@ script = ExtResource( 3 )
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0.345098, 0.243137, 0.243137, 1 )
+color = Color( 0.67451, 0.196078, 0.196078, 1 )
 
 [node name="VContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0

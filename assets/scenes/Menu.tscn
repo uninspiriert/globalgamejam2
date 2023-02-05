@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=31 format=2]
 
 [ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/sprites/level2-tooth_whole.png" type="Texture" id=2]
@@ -13,6 +13,14 @@
 [ext_resource path="res://assets/sprites/tooth-top-damaged-3.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/tooth-top.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/tooth-top-damaged-2.png" type="Texture" id=13]
+[ext_resource path="res://assets/sprites/level2/A-Button.png" type="Texture" id=14]
+[ext_resource path="res://assets/sprites/level2/B-Button.png" type="Texture" id=15]
+[ext_resource path="res://assets/sprites/bacteria.png" type="Texture" id=16]
+[ext_resource path="res://resources/Oranienbaum-Regular.ttf" type="DynamicFontData" id=17]
+
+[sub_resource type="DynamicFont" id=17]
+size = 131
+font_data = ExtResource( 17 )
 
 [sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 10 )
@@ -63,6 +71,100 @@ tracks/0/keys = {
 "values": [ 0.0, 0.0, -55.0 ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "abtnpress"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 0.6 ),
+"transitions": PoolRealArray( 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 3, 3 ), Vector2( 4, 4 ) ]
+}
+
+[sub_resource type="Animation" id=12]
+resource_name = "banger"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite3:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1.9, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 0.0, -55.0 ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "bbtnpress"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8, 1.4, 1.5 ),
+"transitions": PoolRealArray( 0, 0, 0, 0, 0 ),
+"update": 0,
+"values": [ Vector2( 4, 4 ), Vector2( 3, 3 ), Vector2( 4, 4 ), Vector2( 3, 3 ), Vector2( 4, 4 ) ]
+}
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 323, 296 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "poofexample"
+length = 1.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.7, 0.8, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 323, 300 ), Vector2( 323, 300 ), Vector2( 479, 300 ), Vector2( 479, 300 ), Vector2( 323, 300 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 0, 0 ),
+"update": 0,
+"values": [ Vector2( -3, 3 ), Vector2( 3, 3 ) ]
+}
+
 [node name="Menu" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 3 )
@@ -84,13 +186,13 @@ anchor_bottom = 1.0
 
 [node name="Titel" type="Label" parent="VBoxContainer"]
 margin_right = 1920.0
-margin_bottom = 75.0
-custom_fonts/font = ExtResource( 1 )
+margin_bottom = 153.0
+custom_fonts/font = SubResource( 17 )
 text = "Sweet Tooth"
 align = 1
 
 [node name="HContainer" type="HBoxContainer" parent="VBoxContainer"]
-margin_top = 79.0
+margin_top = 157.0
 margin_right = 1920.0
 margin_bottom = 1080.0
 size_flags_horizontal = 3
@@ -99,7 +201,7 @@ size_flags_vertical = 3
 [node name="PanelLinks" type="Panel" parent="VBoxContainer/HContainer"]
 self_modulate = Color( 1, 1, 1, 0 )
 margin_right = 958.0
-margin_bottom = 1001.0
+margin_bottom = 923.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -109,9 +211,9 @@ anchor_bottom = 1.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/HContainer/PanelLinks/CenterContainer"]
 margin_left = 379.0
-margin_top = 378.0
+margin_top = 339.0
 margin_right = 579.0
-margin_bottom = 623.0
+margin_bottom = 584.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
@@ -146,7 +248,7 @@ align = 2
 self_modulate = Color( 1, 1, 1, 0 )
 margin_left = 962.0
 margin_right = 1920.0
-margin_bottom = 1001.0
+margin_bottom = 923.0
 size_flags_horizontal = 3
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer/HContainer/PanelRechts"]
@@ -154,7 +256,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Tooth-menu-icon" type="Sprite" parent="VBoxContainer/HContainer/PanelRechts/CenterContainer"]
-position = Vector2( 50, 667 )
+position = Vector2( 55, 593 )
 scale = Vector2( 20, 20 )
 texture = ExtResource( 2 )
 
@@ -166,11 +268,12 @@ margin_right = 1859.0
 margin_bottom = 1078.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="Panel"]
-position = Vector2( 241, 236 )
+position = Vector2( -102, 284 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
+offset = Vector2( 85.75, -12 )
 
 [node name="Label" type="Label" parent="Panel"]
 margin_left = 365.0
@@ -230,7 +333,7 @@ text = "Worse"
 position = Vector2( 232, 829 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 6 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Label3" type="Label" parent="Panel"]
@@ -251,6 +354,60 @@ texture = ExtResource( 9 )
 root_node = NodePath("../..")
 autoplay = "banger"
 anims/banger = SubResource( 7 )
+
+[node name="AButton" type="Sprite" parent="."]
+position = Vector2( 227, 146 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 14 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AButton"]
+autoplay = "abtnpress"
+anims/abtnpress = SubResource( 15 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 104, 198 )
+scale = Vector2( 3, 3 )
+frames = SubResource( 5 )
+frame = 1
+playing = true
+offset = Vector2( 85.75, -12 )
+
+[node name="Sprite3" type="Sprite" parent="AnimatedSprite2"]
+position = Vector2( 72, -26 )
+texture = ExtResource( 9 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatedSprite2/Sprite3"]
+root_node = NodePath("../..")
+autoplay = "banger"
+anims/banger = SubResource( 12 )
+
+[node name="BButton" type="Sprite" parent="."]
+position = Vector2( 228, 295 )
+scale = Vector2( 4, 4 )
+texture = ExtResource( 15 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BButton"]
+autoplay = "bbtnpress"
+anims/bbtnpress = SubResource( 16 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 323, 296 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 16 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sprite"]
+autoplay = "poofexample"
+anims/RESET = SubResource( 13 )
+anims/poofexample = SubResource( 14 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = 926.0
+margin_right = 1412.0
+margin_bottom = 1086.0
+custom_fonts/normal_font = ExtResource( 1 )
+text = "A game by 
+Felix Schoeller, Kevin Klever and Tim Kluj"
 
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Start" to="." method="_on_Start_pressed"]
 [connection signal="pressed" from="VBoxContainer/HContainer/PanelLinks/CenterContainer/VBoxContainer/Options" to="." method="_on_Options_pressed"]
