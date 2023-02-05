@@ -13,7 +13,7 @@ func _ready():
 	customfont.font_data = load("res://resources/Oranienbaum-Regular.ttf")
 	customfont.size = 48
 	_loadHighScore(null)
-	tname = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/tname
+	tname = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
 	total_time_seconds = OS.get_unix_time() - GameData.start_time
 	set_highscore(float(GameData.rem_life) * 10000.0 / total_time_seconds)
 	

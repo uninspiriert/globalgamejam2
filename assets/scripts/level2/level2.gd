@@ -13,14 +13,14 @@ var rndweight
 
 func _ready():
 	lable_rem_hitpoints.text = str(rem_hitpoints)
-	rndweight = rand_range(-5, 5)
+	rndweight = rand_range(-15, 15)
 	velocity += rndweight
 	pass
 
 func _input(event):
 	var inputval = 0.0
 	if event.is_action("attack"):
-		inputval = -10
+		inputval = -20
 	if event.is_action_pressed("attack"):
 		rem_hitpoints -= 1
 		btnA.scale = Vector2(9,9)
@@ -29,7 +29,7 @@ func _input(event):
 		btnA.scale = Vector2(10,10)
 
 	if event.is_action("dodge"):
-		inputval = 10
+		inputval = 20
 	if event.is_action_pressed("dodge"):
 		rem_hitpoints -= 1
 		btnB.scale = Vector2(9,9)
