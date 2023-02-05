@@ -1,0 +1,271 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/scripts/GameEnd.gd" type="Script" id=1]
+[ext_resource path="res://resources/baumfont.tres" type="DynamicFont" id=2]
+
+[node name="GameOver" type="CanvasLayer"]
+pause_mode = 2
+script = ExtResource( 1 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.180392, 0.180392, 0.180392, 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="GameOver" type="Label" parent="VBoxContainer"]
+margin_right = 1920.0
+margin_bottom = 75.0
+rect_pivot_offset = Vector2( -817, -129 )
+custom_fonts/font = ExtResource( 2 )
+text = "Congratulations!"
+align = 1
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 79.0
+margin_right = 1920.0
+margin_bottom = 995.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HighscorePanel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+margin_right = 1277.0
+margin_bottom = 916.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HighscoreMarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="HighScoreVBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer"]
+margin_right = 1267.0
+margin_bottom = 906.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer"]
+margin_right = 1267.0
+margin_bottom = 75.0
+
+[node name="Highscore" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/HBoxContainer"]
+margin_right = 265.0
+margin_bottom = 75.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Highscore:"
+align = 1
+
+[node name="HighscoreValue" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/HBoxContainer"]
+margin_left = 269.0
+margin_right = 1267.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+align = 1
+
+[node name="StatsPanel" type="Panel" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 79.0
+margin_right = 1267.0
+margin_bottom = 817.0
+size_flags_vertical = 3
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer"]
+margin_right = 287.0
+margin_bottom = 738.0
+size_flags_vertical = 3
+
+[node name="HBoxStatsContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer"]
+margin_right = 287.0
+margin_bottom = 738.0
+size_flags_horizontal = 3
+
+[node name="StatsGridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer"]
+margin_right = 287.0
+margin_bottom = 738.0
+size_flags_horizontal = 3
+columns = 2
+
+[node name="VContainerNames" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer"]
+margin_right = 144.0
+margin_bottom = 75.0
+
+[node name="NameHeadline" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer/VContainerNames"]
+margin_right = 144.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "Name"
+
+[node name="VContainerScores" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer"]
+margin_left = 148.0
+margin_right = 287.0
+margin_bottom = 75.0
+
+[node name="ScoreHeadline" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/StatsPanel/ScrollContainer/StatsMarginContainer/HBoxStatsContainer/StatsGridContainer/VContainerScores"]
+margin_right = 139.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "Score"
+
+[node name="NameContainer" type="HBoxContainer" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer"]
+margin_top = 821.0
+margin_right = 1267.0
+margin_bottom = 906.0
+
+[node name="LName" type="Label" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer"]
+margin_right = 156.0
+margin_bottom = 75.0
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Name:"
+align = 1
+valign = 1
+
+[node name="TName" type="LineEdit" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer"]
+margin_left = 160.0
+margin_right = 1135.0
+margin_bottom = 85.0
+focus_neighbour_bottom = NodePath("../PostScore")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+
+[node name="PostScore" type="Button" parent="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer"]
+margin_left = 1139.0
+margin_right = 1267.0
+margin_bottom = 85.0
+focus_neighbour_top = NodePath("../TName")
+focus_neighbour_bottom = NodePath("../../../../../../HBoxContainer/Menu")
+custom_fonts/font = ExtResource( 2 )
+text = "Save"
+
+[node name="StatsPanel" type="Panel" parent="VBoxContainer/HBoxContainer2"]
+margin_left = 1281.0
+margin_right = 1920.0
+margin_bottom = 916.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+
+[node name="StatsVBoxContainer" type="VBoxContainer" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer"]
+margin_right = 629.0
+margin_bottom = 906.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Stats" type="Label" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer"]
+margin_right = 629.0
+margin_bottom = 75.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+custom_fonts/font = ExtResource( 2 )
+text = "Stats"
+align = 1
+
+[node name="StatsPanel" type="Panel" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer"]
+self_modulate = Color( 1, 0, 0, 1 )
+margin_top = 79.0
+margin_right = 629.0
+margin_bottom = 906.0
+size_flags_vertical = 3
+
+[node name="StatsMarginContainer" type="MarginContainer" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -5.0
+size_flags_vertical = 3
+
+[node name="StatsGridContainer" type="GridContainer" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer"]
+margin_right = 619.0
+margin_bottom = 817.0
+columns = 2
+
+[node name="LEnemyScore" type="Label" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer"]
+margin_right = 138.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "Time:"
+
+[node name="LEnemyScoreVal" type="Label" parent="VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer"]
+margin_left = 142.0
+margin_right = 175.0
+margin_bottom = 75.0
+custom_fonts/font = ExtResource( 2 )
+text = "0"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 999.0
+margin_right = 1920.0
+margin_bottom = 1080.0
+alignment = 1
+
+[node name="Menu" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_right = 637.0
+margin_bottom = 81.0
+focus_neighbour_top = NodePath("../../HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore")
+focus_neighbour_bottom = NodePath("../Options")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Menu"
+
+[node name="Options" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 641.0
+margin_right = 1278.0
+margin_bottom = 81.0
+focus_neighbour_top = NodePath("../Menu")
+focus_neighbour_bottom = NodePath("../Quit")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Options"
+
+[node name="Quit" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 1282.0
+margin_right = 1920.0
+margin_bottom = 81.0
+focus_neighbour_top = NodePath("../Options")
+size_flags_horizontal = 3
+custom_fonts/font = ExtResource( 2 )
+text = "Quit"
+
+[node name="NoHighscore" type="Panel" parent="."]
+self_modulate = Color( 1, 1, 1, 0.862745 )
+margin_top = 163.0
+margin_right = 1273.0
+margin_bottom = 994.0
+
+[node name="Label" type="Label" parent="NoHighscore"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "No Highscore"
+align = 1
+valign = 1
+
+[connection signal="pressed" from="VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/PostScore" to="." method="_on_PostScore_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Menu" to="." method="_on_Menu_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Options" to="." method="_on_Options_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/Quit" to="." method="_on_Quit_pressed"]
