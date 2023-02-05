@@ -88,8 +88,10 @@ func _on_StartTimer_timeout():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	$SceneChange.start()
-	$Toof.queue_free()
-	
+	$AnimationPlayer.current_animation = "[stop]"
+	$AnimationPlayerEnd.current_animation = "[stop]"
+	remove_child($Toof)
+
 
 
 func _on_SceneChange_timeout():
