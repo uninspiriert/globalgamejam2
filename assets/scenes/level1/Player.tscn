@@ -112,11 +112,11 @@ height = 34.0
 [node name="Player" type="KinematicBody2D" groups=["player"]]
 script = ExtResource( 1 )
 speed = 500.0
-health = 4.0
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 5 )
 animation = "walking"
+frame = 1
 playing = true
 
 [node name="Sugarcane" parent="." instance=ExtResource( 3 )]

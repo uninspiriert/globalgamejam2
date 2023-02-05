@@ -30,6 +30,9 @@ window/stretch/aspect="keep"
 texture={
 "flags/filter": false
 }
+mp3={
+"loop": false
+}
 
 [input]
 

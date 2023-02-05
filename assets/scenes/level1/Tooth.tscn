@@ -34,6 +34,7 @@ one_shot = true
 autostart = true
 
 [node name="BonkSounds" type="AudioStreamPlayer" parent="."]
+bus = "Effects"
 script = ExtResource( 12 )
 audio_files = [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 8 ) ]
 

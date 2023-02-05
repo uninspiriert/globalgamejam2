@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/splatt.mp3-bbba2985ea4f39780b484739c87dca4a.mp3str"
+
+[deps]
+
+source_file="res://assets/scenes/audio/splatt.mp3"
+dest_files=[ "res://.import/splatt.mp3-bbba2985ea4f39780b484739c87dca4a.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

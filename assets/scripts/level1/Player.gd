@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var speed: float = 10.0
 export var dash_speed: float = 1
-export var health: float = 30.0
+export var health: float = 4.0
 
 
 enum PlayerState{

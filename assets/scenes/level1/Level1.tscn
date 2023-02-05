@@ -48,7 +48,6 @@ texture = ExtResource( 10 )
 position = Vector2( 223, 344 )
 scale = Vector2( 4, 4 )
 z_index = 100
-health = 30.0
 
 [node name="Tooth" parent="." instance=ExtResource( 2 )]
 position = Vector2( 466, 22 )
