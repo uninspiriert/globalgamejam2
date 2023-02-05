@@ -9,30 +9,30 @@
 [ext_resource path="res://assets/sprites/tooth-top-damaged-1.png" type="Texture" id=7]
 [ext_resource path="res://assets/sprites/brush.png" type="Texture" id=8]
 [ext_resource path="res://assets/sprites/sugar-cane.png" type="Texture" id=9]
-[ext_resource path="res://assets/sprites/player-top.png" type="Texture" id=10]
+[ext_resource path="res://assets/sprites/player.png" type="Texture" id=10]
 [ext_resource path="res://assets/sprites/tooth-top-damaged-3.png" type="Texture" id=11]
 [ext_resource path="res://assets/sprites/tooth-top.png" type="Texture" id=12]
 [ext_resource path="res://assets/sprites/tooth-top-damaged-2.png" type="Texture" id=13]
 
-[sub_resource type="AtlasTexture" id=1]
+[sub_resource type="AtlasTexture" id=8]
 atlas = ExtResource( 10 )
 region = Rect2( 0, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=2]
+[sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 10 )
 region = Rect2( 24, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=3]
+[sub_resource type="AtlasTexture" id=10]
 atlas = ExtResource( 10 )
 region = Rect2( 48, 0, 24, 24 )
 
-[sub_resource type="AtlasTexture" id=4]
+[sub_resource type="AtlasTexture" id=11]
 atlas = ExtResource( 10 )
 region = Rect2( 72, 0, 24, 24 )
 
 [sub_resource type="SpriteFrames" id=5]
 animations = [ {
-"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ) ],
+"frames": [ SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
 "loop": true,
 "name": "default",
 "speed": 5.0
@@ -169,7 +169,7 @@ margin_bottom = 1078.0
 position = Vector2( 241, 236 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
-frame = 1
+frame = 2
 playing = true
 
 [node name="Label" type="Label" parent="Panel"]
@@ -230,6 +230,7 @@ text = "Worse"
 position = Vector2( 232, 829 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 6 )
+frame = 2
 playing = true
 
 [node name="Label3" type="Label" parent="Panel"]
@@ -242,6 +243,7 @@ text = "Goal!"
 
 [node name="Sprite3" type="Sprite" parent="Panel"]
 position = Vector2( 339, 786 )
+rotation = -0.959931
 scale = Vector2( 4, 4 )
 texture = ExtResource( 9 )
 

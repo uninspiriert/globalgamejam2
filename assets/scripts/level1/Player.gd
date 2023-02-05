@@ -18,7 +18,6 @@ onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
 onready var shake = $"../Camera2D/ShakeScreen"
 onready var blinker = $Blinking
-onready var dash_poof = $DashPoof/Particles2D
 
 var screen_size = null
 
