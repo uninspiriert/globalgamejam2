@@ -16,7 +16,7 @@ func set_correct_texture():
 	sprite.set_texture(damage_levels[damage_level])
 
 func increase_damage() -> bool:
-	$BonkPlayer.play()
+	$BonkSounds.play_random()
 
 	if damage_level == damage_levels.size() - 1:
 		var blood = blood_splatter.instance()
