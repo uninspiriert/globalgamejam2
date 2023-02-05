@@ -3,7 +3,7 @@ extends KinematicBody2D
 export var speed: float = 10.0
 export var dash_speed: float = 1
 export var health: float = 4.0
-
+export(PackedScene) var poof_scene
 
 enum PlayerState{
 	NONE,
@@ -12,11 +12,13 @@ enum PlayerState{
 }
 var player_state
 
+onready var anim_sprite = $AnimatedSprite
 onready var anim: AnimationPlayer = $AnimationPlayer
 onready var cane_hit_area = $CaneHitArea
 onready var canvasUI = get_parent().get_node("CanvasLayer/UI")
 onready var shake = $"../Camera2D/ShakeScreen"
 onready var blinker = $Blinking
+onready var dash_poof = $DashPoof/Particles2D
 
 var screen_size = null
 
@@ -48,12 +50,7 @@ func _process(delta: float):
 
 func _physics_process(_delta: float):
 	var velocity = Vector2.ZERO
-#
-#	if player_state != PlayerState.IMMOBILIZED:
-	if Input.is_action_just_pressed("dodge") and $DashCD.is_ready():
-		$DashDuration.start()
-		dash_speed = 5
-		player_state = PlayerState.INVINCIBLE
+
 	if Input.is_action_pressed("move_up"):
 		velocity.y -= 1
 	if Input.is_action_pressed("move_down"):
@@ -63,14 +60,31 @@ func _physics_process(_delta: float):
 	if Input.is_action_pressed("move_right"):
 		velocity.x += 1
 
+	if Input.is_action_just_pressed("dodge") and $DashCD.is_ready():
+		$DashDuration.start()
+		dash_speed = 5
+		player_state = PlayerState.INVINCIBLE
+		if velocity.length() != 0:
+			var dash_poof = poof_scene.instance()
+			get_parent().add_child(dash_poof)
+			dash_poof.global_position = global_position
+			dash_poof.look_at(global_position + 100 * velocity)
+			dash_poof.global_position = global_position - velocity.normalized()
+			dash_poof.scale = scale
+			dash_poof.restart()
+
 	
 	velocity = move_and_slide(velocity.normalized() * speed * dash_speed)
-		
-		
+
 	if velocity.x != 0:
 		$AnimatedSprite.flip_h = velocity.x < 0
 		$Sugarcane/Sprite.flip_h = velocity.x < 0
-		
+
+	if velocity.y > 0:
+		anim_sprite.animation = "walking_down"
+	else:
+		anim_sprite.animation = "walking"
+
 	position.x = clamp(position.x, 0, screen_size.x)
 	position.y = clamp(position.y, 0, screen_size.y)
 
