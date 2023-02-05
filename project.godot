@@ -13,7 +13,7 @@ config_version=4
 config/name="SweetTooth"
 run/main_scene="res://assets/scenes/Main.tscn"
 boot_splash/image="res://splash.png"
-config/icon="res://assets/sprites/icon.png"
+config/icon="res://assets/sprites/tooth_big_grabber.png"
 
 [autoload]
 
