@@ -6,7 +6,7 @@ onready var slider = $QE/Slider
 onready var shaker = $Camera2D/ShakeCamera
 onready var gamewon = load("res://assets/scenes/GameEnd.tscn")
 onready var gameover = load("res://assets/scenes/GameOver.tscn")
-var rem_hitpoints = 2
+var rem_hitpoints = 30
 onready var lable_rem_hitpoints = $Camera2D/HBoxContainer/Value
 var velocity :float = 0.0
 var rndweight
