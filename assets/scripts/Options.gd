@@ -31,12 +31,12 @@ func _on_SliderMaster_value_changed(value):
 
 
 func _on_SliderMusic_value_changed(value):
-	AudioServer.set_bus_volume_db(GameData._masterbus, linear2db(value))
+	AudioServer.set_bus_volume_db(GameData._musicbus, linear2db(value))
 	labelMusic.text = str(value*100) + "%"
 
 
 func _on_SliderEffects_value_changed(value):
-	AudioServer.set_bus_volume_db(GameData._masterbus, linear2db(value))
+	AudioServer.set_bus_volume_db(GameData._effectsbus, linear2db(value))
 	labelEffects.text = str(value*100) + "%"
 
 
