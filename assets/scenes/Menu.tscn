@@ -169,7 +169,7 @@ margin_bottom = 1078.0
 position = Vector2( 241, 236 )
 scale = Vector2( 4, 4 )
 frames = SubResource( 5 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Label" type="Label" parent="Panel"]
@@ -230,7 +230,6 @@ text = "Worse"
 position = Vector2( 232, 829 )
 scale = Vector2( 6, 6 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="Label3" type="Label" parent="Panel"]
