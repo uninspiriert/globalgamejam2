@@ -13,4 +13,5 @@ func _input(event):
 func switch_scene():
 	var level2 = level2_scene.instance()
 	get_parent().add_child(level2)
+	GameData.rem_life = $Player.health
 	queue_free()

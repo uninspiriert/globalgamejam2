@@ -44,5 +44,4 @@ func _process(delta):
 	if slider.value == 0 or slider.value == 100:
 		var _gameover = get_tree().change_scene_to(gameover)
 	if rem_hitpoints == 0:
-		GameData.end_time = OS.get_time()
 		var _gamewon = get_tree().change_scene_to(gamewon)

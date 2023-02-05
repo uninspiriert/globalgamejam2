@@ -7,15 +7,14 @@ var savePath = "user://Score.json"
 var customfont
 
 func _ready():
-	print(GameData.start_time)
-	print(GameData.end_time)
-#	print(GameData.end_time - GameData.start_time)
+
 	customfont = DynamicFont.new()
 	customfont.font_data = load("res://resources/Oranienbaum-Regular.ttf")
 	customfont.size = 20
 	_loadHighScore(null)
 	TName = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/NameContainer/TName
-
+	set_highscore(OS.get_ticks_msec()/1000.0)
+	
 
 func _process(_delta):
 	if TName.get_focus_owner() == null and TName.focus_mode == 2:
@@ -25,12 +24,16 @@ func _process(_delta):
 		menu.grab_focus()
 		
 func set_highscore(highscore):
+	highscore = int(highscore)
 	score = highscore
 	var LHighscore = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/HBoxContainer/HighscoreValue
-	LHighscore.text = str(highscore)
+	LHighscore.text = str(highscore*GameData.rem_life)
 	
-	var stats_time = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LEnemyScoreVal
-	stats_time.text = str(GameData.end_time - GameData.start_time)
+	var stats_time = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LTimeScoreVal
+	stats_time.text = str(highscore)
+	
+	var stats_lifes = $VBoxContainer/HBoxContainer2/StatsPanel/StatsMarginContainer/StatsVBoxContainer/StatsPanel/StatsMarginContainer/StatsGridContainer/LLifeScoreVal
+	stats_lifes.text = str(GameData.rem_life)
 
 func _on_Menu_pressed():
 	var _main = get_tree().change_scene("res://assets/scenes/Main.tscn")
