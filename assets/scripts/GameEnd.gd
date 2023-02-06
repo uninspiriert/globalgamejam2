@@ -27,7 +27,7 @@ func _process(_delta):
 		
 func set_highscore(highscore):
 	highscore = int(highscore)
-	score = highscore
+	score = highscore*GameData.rem_life
 	var LHighscore = $VBoxContainer/HBoxContainer2/HighscorePanel/HighscoreMarginContainer/HighScoreVBoxContainer/HBoxContainer/HighscoreValue
 	LHighscore.text = str(highscore*GameData.rem_life)
 	
